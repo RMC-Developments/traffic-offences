@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Traffic Offences</title>
+<title>NSW Traffic Offences Tool</title>
+<script>try{var t=localStorage.getItem("to_theme");if(t&&t!=="auto")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Traffic Offences">
+<meta name="apple-mobile-web-app-title" content="NSW Traffic Offences Tool">
+<meta name="application-name" content="NSW Traffic Offences Tool">
+<meta name="theme-color" content="#f2f3f7">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
 <style>
 :root{--bg:#f2f3f7;--card:#fff;--txt:#14161c;--mut:#6b7080;--line:#e3e5ec;--acc:#1b4fd8;--accbg:#e8eefc;--pts:#fff3e0;--ptst:#b45309;--fine:#0f7a4a;--fineb:#e3f6ec;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root{--bg:#0e1015;--card:#1a1d26;--txt:#f1f2f6;--mut:#9aa0b3;--line:#2a2e3b;--acc:#7da2ff;--accbg:#232d4d;--pts:#3b2a10;--ptst:#fbbf5c;--fine:#5fe0a1;--fineb:#12301f}}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1015;--card:#1a1d26;--txt:#f1f2f6;--mut:#9aa0b3;--line:#2a2e3b;--acc:#7da2ff;--accbg:#232d4d;--pts:#3b2a10;--ptst:#fbbf5c;--fine:#5fe0a1;--fineb:#12301f}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:14px 16px 8px}
@@ -50,10 +56,23 @@ footer{font-size:11px;color:var(--mut);text-align:center;padding:0 24px 30px;lin
 .back{border:0;background:var(--accbg);color:var(--acc);font:inherit;font-weight:600;font-size:15px;padding:7px 12px;border-radius:18px}
 .ct{font-weight:700;font-size:16px}
 .code{font-size:12px;color:var(--mut);margin-top:7px}.code b{color:var(--txt);font-variant-numeric:tabular-nums;letter-spacing:.3px;font-size:13px}.code i{color:var(--ptst);font-style:normal;font-weight:600;margin-left:4px}
+.info{position:absolute;right:16px;top:16px;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);display:flex;align-items:center;justify-content:center;padding:0}
+.info svg{width:18px;height:18px}
+#themeBtn{right:58px}
+:root[data-theme=dark]{--bg:#0e1015;--card:#1a1d26;--txt:#f1f2f6;--mut:#9aa0b3;--line:#2a2e3b;--acc:#7da2ff;--accbg:#232d4d;--pts:#3b2a10;--ptst:#fbbf5c;--fine:#5fe0a1;--fineb:#12301f;color-scheme:dark}
+:root[data-theme=light]{color-scheme:light}
+.rec{padding-top:8px}.rh{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:6px 4px 8px}
+.clrr{border:0;background:none;color:var(--acc);font:inherit;font-size:13px;font-weight:600;text-transform:none;letter-spacing:0}
+.rcs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.rc{border:1px solid var(--line);background:var(--card);color:var(--txt);font:inherit;font-size:14px;padding:7px 12px;border-radius:18px}
+.about{padding-top:8px}.about h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:18px 4px 8px}.about .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:15px;line-height:1.45}.about p{margin:0 0 10px}.about p:last-child{margin:0}.about ul{margin:0;padding-left:18px}.about li{margin-bottom:8px}.about a{color:var(--acc)}
+footer a{color:var(--acc);font-size:13px;font-weight:600;display:inline-block;margin-bottom:8px}
 </style>
 </head>
 <body>
 <header>
+<button class="info" id="infoBtn" aria-label="About and privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
+<button class="info" id="themeBtn" aria-label="Change theme"></button>
 <h1>Traffic Offences<small>NSW penalties &amp; demerit points · as at 1 July 2020</small></h1>
 <div class="search">
 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -64,7 +83,7 @@ footer{font-size:11px;color:var(--mut);text-align:center;padding:0 24px 30px;lin
 </header>
 <div class="meta" id="meta"></div>
 <main id="list"></main>
-<footer>Guide only. Subject to change and does not replace the relevant legislation. “Double demerits” applies on specified long weekends and holiday periods.</footer>
+<footer><a href="#" id="abt">About, privacy &amp; sources</a><br>Unofficial. Not affiliated with the NSW Government or Service NSW.<br>Guide only. Subject to change and does not replace the relevant legislation. “Double demerits” applies on specified long weekends and holiday periods.</footer>
 <script>
 // Format: rule|description|fine|demerit points (append "d" = double demerit offence)
 const RAW=`#Left Turn
@@ -316,7 +335,13 @@ const k=p[0].replace(/^Rule /,"").replace(/ /g,"");seen[k]=(seen[k]||0)+1;
 let c=CODES[k+"#"+seen[k]]||CODES[k]||"";const rep=/r$/.test(c);c=String(c).replace(/r$/,"");
 D.push({rule:p[0],desc:p[1],fine:+p[2],pts:parseInt(p[3])||0,dbl:/d$/.test(p[3]),cat,code:c,rep})});
 const cats=[...new Set(D.map(d=>d.cat))];
-let active=null;
+let active=null,about=false,homeY=0,recents=[];
+try{recents=JSON.parse(localStorage.getItem("to_recent")||"[]")}catch(e){}
+function saveR(){try{localStorage.setItem("to_recent",JSON.stringify(recents))}catch(e){}}
+function addRecent(v){v=v.trim();if(v.length<2)return;recents=[v,...recents.filter(x=>x.toLowerCase()!==v.toLowerCase())].slice(0,8);saveR()}
+function recHtml(){if(!recents.length)return"";return '<div class="rec"><div class="rh"><span>Recent searches</span><button class="clrr">Clear</button></div><div class="rcs">'+recents.map(r=>'<button class="rc" data-q="'+esc(r).replace(/"/g,"&quot;")+'">'+esc(r)+'</button>').join("")+'</div></div>'}
+function openAbout(){if(!about&&!active&&!q.value)homeY=window.scrollY;about=true;render();window.scrollTo({top:0})}
+const ABOUT=`<div class="about"><h2>Declaration</h2><div class="box"><p>This app is an independent, unofficial reference tool. It is <b>not</b> associated with, endorsed by or affiliated with the NSW Government, Transport for NSW, Service NSW, the Judicial Commission of NSW or any other government body.</p><p>It only reorganises publicly available information. It is a guide only, is not legal advice, and does not replace the relevant legislation. Fines, demerit points and law part codes can change, so always check the official sources before relying on anything shown here.</p></div><h2>Sources used</h2><div class="box"><ul><li><b>Fines and demerit points:</b> NSW Government “General driving offences” penalties guide (as at 1 July 2020).</li><li><b>Law part codes:</b> Judicial Commission of NSW, Lawcodes – Road Rules 2014 (printed 14 November 2026).</li><li><b>Rule numbers and offence wording:</b> Road Rules 2014 (NSW), made under the Road Transport Act 2013.</li></ul></div><h2>Official resources</h2><div class="box"><ul><li><a href="https://legislation.nsw.gov.au" target="_blank" rel="noopener">legislation.nsw.gov.au</a> – current NSW legislation</li><li><a href="https://lawcodes.judcom.nsw.gov.au" target="_blank" rel="noopener">lawcodes.judcom.nsw.gov.au</a> – law part codes</li><li><a href="https://www.nsw.gov.au" target="_blank" rel="noopener">nsw.gov.au</a> – NSW Government road rules and penalties</li></ul></div><h2>Privacy</h2><div class="box"><p>No accounts, no personal information collected, no cookies and no analytics or tracking. All searching happens on your device.</p><p>Recent searches and your light/dark choice are saved only in your browser on this device and are never sent anywhere. Use “Clear” on the home screen to remove them.</p><p>The site is hosted on GitHub Pages, which may log standard technical data such as IP addresses under GitHub’s own privacy policy.</p></div><h2>How it was made</h2><div class="box"><p>A single HTML page (HTML, CSS and JavaScript, with no external libraries) built with the help of AI (Claude by Anthropic) from the sources listed above.</p></div></div>`;
 const P={left:'<path d="M18 20v-8a4 4 0 0 0-4-4H6M10 4L6 8l4 4"/>',right:'<path d="M6 20v-8a4 4 0 0 1 4-4h8M14 4l4 4-4 4"/>',u:'<path d="M6 20V9a5 5 0 0 1 10 0v9M12 14l4 4 4-4"/>',sig:'<path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/>',tl:'<rect x="8" y="2" width="8" height="20" rx="2"/><circle cx="12" cy="7" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="17" r="1.4"/>',lane:'<path d="M8 3L4 21M16 3l4 18M12 4v3M12 10v4M12 17v3"/>',rb:'<path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/>',belt:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',moto:'<circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10L9 7H7M14 10l1-3h2"/>',phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',bike:'<circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-8h5l3 8M10 8H8M15 8l-3 8"/>',ovt:'<path d="M3 8h12M11 4l4 4-4 4M3 17h18M17 13l4 4-4 4"/>',bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5V16h8v-2.5A6 6 0 0 0 12 3z"/>',lic:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c0-2 6-2 6 0"/>',ban:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/>',doc:'<path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/>',ped:'<circle cx="12" cy="5" r="2"/><path d="M12 8v6l-3 6M12 14l3 6M8 11l4-3 4 3"/>',siren:'<path d="M7 18v-6a5 5 0 0 1 10 0v6M5 18h14M12 3v2M4 8l1.5 1M20 8l-1.5 1"/>',bus:'<rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16"/><circle cx="8" cy="19.5" r="1.2"/><circle cx="16" cy="19.5" r="1.2"/>',stop:'<polygon points="8 3 16 3 21 8 21 16 16 21 8 21 3 16 3 8"/><path d="M8 12h8"/>',car:'<path d="M5 16v-4l2-5h10l2 5v4M3 16h18v3H3zM7 12h10"/>'};
 function icon(c){const k=/^Left/.test(c)?'left':/^Right/.test(c)?'right':/U-Turn/.test(c)?'u':/Signal/.test(c)?'sig':/Traffic Lights/.test(c)?'tl':/Lanes &/.test(c)?'lane':/Roundabout/.test(c)?'rb':/Seatbelt/.test(c)?'belt':/Motorcycle/.test(c)?'moto':/Mobile/.test(c)?'phone':/Bicycle/.test(c)?'bike':/Overtaking/.test(c)?'ovt':/^Lights/.test(c)?'bulb':/Licence/.test(c)?'lic':/Drink/.test(c)?'ban':/Registration/.test(c)?'doc':/Crossings/.test(c)?'ped':/Emergency/.test(c)?'siren':/^Bus,/.test(c)?'bus':/Signs/.test(c)?'stop':'car';return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>'}
 const $=id=>document.getElementById(id);
@@ -328,6 +353,8 @@ function render(){
  const ts=norm(q.value.trim()).split(/\s+/).filter(Boolean);
  clr.style.display=q.value?"block":"none";
  buildBar();
+ document.querySelector(".search").style.display=about?"none":"";
+ if(about){meta.textContent="";list.innerHTML=ABOUT;return}
  if(!ts.length&&!active){home();return}
  const rows=D.filter(d=>(!active||d.cat===active)&&ts.every(t=>norm(d.rule+" "+d.desc+" "+d.cat+" $"+d.fine+" "+d.pts+"pts "+d.code).includes(t)));
  clr.style.display=q.value?"block":"none";
@@ -340,13 +367,26 @@ function render(){
   (d.pts?'<br><span class="pts">'+d.pts+' demerit'+(d.pts>1?'s':'')+'</span>':'')+(d.dbl?'<div class="dbl">Double demerits</div>':'')+'</div></div>'});
  list.innerHTML=h}
 function buildBar(){
- chips.innerHTML=active?'<button class="back" id="back">‹ Categories</button><span class="ct">'+esc(active)+'</span>':""}
+ chips.innerHTML=about?'<button class="back">‹ Back</button><span class="ct">About &amp; Privacy</span>':active?'<button class="back" id="back">‹ Categories</button><span class="ct">'+esc(active)+'</span>':""}
 function home(){
  meta.textContent="Choose a category";
- list.innerHTML='<div class="tiles">'+cats.map(c=>'<button class="tile" data-c="'+esc(c)+'"><span class="ic">'+icon(c)+'</span><span class="nm">'+esc(c)+'</span><span class="n">'+D.filter(d=>d.cat===c).length+' offences</span></button>').join("")+'</div>'}
-list.onclick=e=>{const b=e.target.closest(".tile");if(!b)return;active=b.dataset.c;q.value="";render();window.scrollTo({top:0})};
-chips.onclick=e=>{if(!e.target.closest(".back"))return;active=null;q.value="";render();window.scrollTo({top:0})};
+ list.innerHTML=recHtml()+'<div class="tiles">'+cats.map(c=>'<button class="tile" data-c="'+esc(c)+'"><span class="ic">'+icon(c)+'</span><span class="nm">'+esc(c)+'</span><span class="n">'+D.filter(d=>d.cat===c).length+' offences</span></button>').join("")+'</div>'}
+list.onclick=e=>{const r=e.target.closest(".rc");if(r){q.value=r.dataset.q;render();return}
+if(e.target.closest(".clrr")){recents=[];saveR();render();return}
+const b=e.target.closest(".tile");if(!b)return;homeY=window.scrollY;active=b.dataset.c;q.value="";render();window.scrollTo({top:0})};
+chips.onclick=e=>{if(!e.target.closest(".back"))return;if(about)about=false;else active=null;q.value="";render();window.scrollTo(0,active?0:homeY)};
 q.oninput=render;
+$("abt").onclick=e=>{e.preventDefault();openAbout()};$("infoBtn").onclick=openAbout;
+let theme="auto";try{theme=localStorage.getItem("to_theme")||"auto"}catch(e){}
+const TI={auto:'<circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/>',light:'<circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/>',dark:'<path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/>'};
+const TN={auto:"Theme: automatic (follows your device)",light:"Theme: light",dark:"Theme: dark"};
+function applyTheme(){const r=document.documentElement;theme==="auto"?r.removeAttribute("data-theme"):r.setAttribute("data-theme",theme);
+ const b=$("themeBtn");b.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+TI[theme]+'</svg>';b.title=TN[theme];b.setAttribute("aria-label",TN[theme]);
+ const dk=theme==="dark"||(theme==="auto"&&matchMedia("(prefers-color-scheme:dark)").matches);document.querySelector('meta[name=theme-color]').content=dk?"#0e1015":"#f2f3f7"}
+$("themeBtn").onclick=()=>{theme={auto:"light",light:"dark",dark:"auto"}[theme];try{localStorage.setItem("to_theme",theme)}catch(e){}applyTheme()};
+applyTheme();try{matchMedia("(prefers-color-scheme:dark)").addEventListener("change",applyTheme)}catch(e){}
+let rt;q.addEventListener("input",()=>{clearTimeout(rt);rt=setTimeout(()=>addRecent(q.value),1500)});
+q.addEventListener("keydown",e=>{if(e.key==="Enter"){clearTimeout(rt);addRecent(q.value);q.blur()}});
 clr.onclick=()=>{q.value="";render();q.focus()};
 render();
 </script>
