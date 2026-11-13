@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Traffic Offences</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Traffic Offences">
+<style>
+:root{--bg:#f2f3f7;--card:#fff;--txt:#14161c;--mut:#6b7080;--line:#e3e5ec;--acc:#1b4fd8;--accbg:#e8eefc;--pts:#fff3e0;--ptst:#b45309;--fine:#0f7a4a;--fineb:#e3f6ec;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#0e1015;--card:#1a1d26;--txt:#f1f2f6;--mut:#9aa0b3;--line:#2a2e3b;--acc:#7da2ff;--accbg:#232d4d;--pts:#3b2a10;--ptst:#fbbf5c;--fine:#5fe0a1;--fineb:#12301f}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:14px 16px 8px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+h1{font-size:28px;margin:0 0 10px;letter-spacing:-.5px}
+h1 small{display:block;font-size:13px;font-weight:500;color:var(--mut);letter-spacing:0;margin-top:2px}
+.search{position:relative}
+.search input{width:100%;font-size:17px;padding:12px 38px 12px 40px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--txt);outline:none;-webkit-appearance:none}
+.search input:focus{border-color:var(--acc)}
+.search svg{position:absolute;left:12px;top:12px;width:18px;height:18px;stroke:var(--mut)}
+#clr{position:absolute;right:8px;top:8px;border:0;background:var(--line);color:var(--mut);width:24px;height:24px;border-radius:50%;font-size:14px;display:none}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);color:var(--txt);padding:7px 13px;border-radius:20px;font-size:14px;font-weight:500}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.meta{padding:6px 18px;font-size:13px;color:var(--mut)}
+main{padding:0 16px 40px}
+.grp{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--mut);margin:16px 4px 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.l{flex:1;min-width:0}
+.rule{font-size:12px;font-weight:700;color:var(--acc);background:var(--accbg);display:inline-block;padding:2px 8px;border-radius:6px;margin-bottom:5px}
+.desc{font-size:15px;line-height:1.35}
+.r{text-align:right;flex:none}
+.fine{font-size:17px;font-weight:700;color:var(--fine);background:var(--fineb);padding:3px 9px;border-radius:8px;display:inline-block}
+.pts{font-size:12px;font-weight:600;color:var(--ptst);background:var(--pts);padding:3px 8px;border-radius:8px;display:inline-block;margin-top:6px}
+.dbl{font-size:11px;color:var(--mut);margin-top:4px}
+mark{background:#ffe27a;color:#000;border-radius:3px}
+.empty{text-align:center;color:var(--mut);padding:50px 20px}
+footer{font-size:11px;color:var(--mut);text-align:center;padding:0 24px 30px;line-height:1.5}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:left;color:var(--txt);font:inherit;display:flex;flex-direction:column;gap:6px;min-height:96px;justify-content:space-between}
+.tile:active{background:var(--accbg)}
+.tile .ic{width:40px;height:40px;border-radius:11px;background:var(--accbg);color:var(--acc);display:flex;align-items:center;justify-content:center}.tile .ic svg{width:22px;height:22px}
+.tile .nm{font-size:15px;font-weight:600;line-height:1.2}
+.tile .n{font-size:12px;color:var(--mut)}
+.bar{display:flex;align-items:center;gap:10px;padding-top:10px}
+.bar:empty{display:none}
+.back{border:0;background:var(--accbg);color:var(--acc);font:inherit;font-weight:600;font-size:15px;padding:7px 12px;border-radius:18px}
+.ct{font-weight:700;font-size:16px}
+.code{font-size:12px;color:var(--mut);margin-top:7px}.code b{color:var(--txt);font-variant-numeric:tabular-nums;letter-spacing:.3px;font-size:13px}.code i{color:var(--ptst);font-style:normal;font-weight:600;margin-left:4px}
+</style>
+</head>
+<body>
+<header>
+<h1>Traffic Offences<small>NSW penalties &amp; demerit points · as at 1 July 2020</small></h1>
+<div class="search">
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+<input id="q" type="search" placeholder="Search offence, rule, section or code…" autocomplete="off" autocorrect="off" enterkeyhint="search">
+<button id="clr" aria-label="Clear">✕</button>
+</div>
+<div class="bar" id="bar"></div>
+</header>
+<div class="meta" id="meta"></div>
+<main id="list"></main>
+<footer>Guide only. Subject to change and does not replace the relevant legislation. “Double demerits” applies on specified long weekends and holiday periods.</footer>
+<script>
+// Format: rule|description|fine|demerit points (append "d" = double demerit offence)
+const RAW=`#Left Turn
+Rule 27 (1)|Not turn left from far left side of road|272|2
+Rule 28 (1)|Not turn left from multi-lane road from within left lane|272|2
+Rule 28 (1A)|Not turn left from slip lane from multi-lane road|272|2
+Rule 29|Turn left contrary to turn line|272|2
+Rule 88 (1)|Disobey left turn only sign|272|2
+Rule 91 (1)|Disobey no left turn sign|272|2
+#Right Turn
+Rule 31 (1)&(2)|Not turn right from left of line/strip correctly|272|2
+Rule 31 (1)&(4)|Not turn right from far right side of one-way road|272|2
+Rule 32 (1)|Not turn right from multi-lane road from within right lane|272|2
+Rule 33 (1)&(2)|Turn right contrary to road marking|272|2
+Rule 33 (1)&(3)|Not turn right near to right of centre of intersection|272|2
+Rule 89 (1)|Disobey right turn only sign|272|2
+Rule 91 (2)|Disobey no right turn sign|272|2
+#U-Turns
+Rule 37 (a)|Begin U-turn without view of approaching traffic|272|2
+Rule 37 (b)|Not safely begin U-turn without obstructing traffic|272|2
+Rule 38|Make U-turn without giving way to vehicle/pedestrian|349|3
+Rule 39 (1)|Make U-turn at break in dividing strip contrary to sign|272|2
+Rule 39 (2)|Make U-turn on length of road contrary to sign|272|2
+Rule 40|Make U-turn at intersection with traffic lights|272|2
+Rule 41|Make U-turn at intersection (no lights) contrary to sign|272|2
+Rule 42 (a)|Not start U-turn in lane nearest dividing line/median strip|272|2
+Rule 42 (b)|Not start U-turn from left of centre of road|272|2
+Rule 132 (2A)|Drive across dividing lines to perform U-turn|349|3
+#Signals & Indicators
+Rule 46 (1)|Not give left change of direction signal with lights|194|2
+Rule 46 (1)&(2)|Not give sufficient left change of direction signal|194|2
+Rule 46 (1)&(3)|Give left change of direction signal (less than 5 seconds)|194|2
+Rule 48 (1)|Not give right change of direction signal with lights|194|2
+Rule 48 (1)&(2)|Not give sufficient right change of direction signal|194|2
+Rule 51|Operate indicator light contrary to permitted use|194|0
+Rule 53 (1)|Not give stop signal with brake lights/signal/device|194|2
+Rule 53 (3)|Not give stop signal when slowing suddenly|194|2
+#Traffic Lights
+Rule 56 (1)(a)|Not stop at stop line at red light|464|3
+Rule 56 (1)(a)|Not stop at stop line at red light – toll booth|194|0
+Rule 56 (2)(a)|Not stop at stop line at red arrow|464|3
+Rule 57 (1)(a)|Not stop at stop line at yellow light|464|3
+Rule 59 (1)|Proceed through red traffic light|464|3
+Rule 59 (1)|Proceed through red traffic light (camera detected)|464|3
+Rule 59 (1)|Proceed through red traffic light – toll booth|194|0
+Rule 60|Proceed through red traffic arrow|464|3
+Rule 60A (1)|Motor vehicle enter bicycle storage area showing red light|464|3
+Rule 61 (2)|Proceed after light change while stopped|464|3
+Rule 61 (5)|Not leave intersection after light/arrow goes yellow/red|464|3
+Rule 62 (1)(a)|Not give way at lights to pedestrian on road|349|3
+Rule 62 (1)(b)(i)|Not give way at lights to other vehicle (left turn)|349|3
+Rule 62 (1)(c)|Not give way at lights to oncoming vehicle (right turn)|349|3
+Rule 63 (2)|Not stop at traffic lights – stop sign (lights not operating)|349|3
+Rule 63 (3)|Not give way to oncoming vehicle (right turn, lights flashing)|349|3
+Rule 64 (a)|Not give way to vehicle (flashing yellow arrow)|349|3
+Rule 64 (b)|Not give way to pedestrian (flashing yellow arrow)|464|3
+Rule 66 (1)|Not stop before lights (twin red lights)|464|3
+#Give Way, Stop Signs & Intersections
+Rule 67 (1)|Not stop at stop line – intersection with no lights|349|3
+Rule 68 (1)|Not stop at/before stop line/stop sign|349|3
+Rule 68 (1)|Not give way to vehicle/pedestrian (stop sign)|349|3
+Rule 69 (1)|Not give way to vehicle (give way sign/line)|349|3
+Rule 71 (1)|Not give way to vehicle/pedestrian (give way sign/line)|349|3
+Rule 72 (1)|Not give way to vehicle on right (travelling straight – unmarked intersection)|349|3
+Rule 72 (1)|Not give way to oncoming vehicle (unmarked intersection)|349|3
+Rule 73 (1)|Not give way to vehicle – turn from terminating road (T-intersection)|349|3
+Rule 73 (1)|Not give way to vehicle – right turn into terminating road|349|3
+Rule 74 (1)(a)|Leave road related area/adjacent land – not give way to vehicle on road|349|3
+Rule 75 (1)(c)|Not give way to vehicle – right turn into area/land|349|3
+Rule 85 (a)|Not give way to vehicle in turning lane|349|3
+Rule 86 (1)|Not give way to vehicle (median turning bay)|349|3
+Rule 87 (1)|Not give way to vehicle (enter road from side/shoulder)|349|3
+Rule 87 (3)|Not give way to vehicle (enter road from parking area)|349|3
+Rule 128|Enter intersection when intersection/road beyond blocked|272|0
+#Emergency Vehicles, Trams & Buses
+Rule 76 (1)|Drive into path of approaching tram|349|3
+Rule 77 (1)|Driver in left lane/traffic line not give way to bus|349|3
+Rule 78 (1)|Move into path of police or emergency vehicle|464|3
+Rule 78 (2)|Not move out of path of police/emergency vehicle|464|3
+Rule 78-1 (2)(a)|Drive past stationary emergency vehicle – speed limit under 80 km/h|464|3
+Rule 78-1 (2)(b)|Drive past stationary emergency vehicle – 80 km/h or over|464|3
+Rule 79 (1)|Not give way to police/emergency vehicle|464|3
+Rule 164 (1)&(2)|Not give way to pedestrian near stopped tram|194|2
+#Pedestrian & Children’s Crossings
+Rule 80 (1)|Approach children’s crossing too quickly to stop safely|464|3
+Rule 80 (2)(b)|Not stop at children’s crossing – pedestrian on crossing|464|3
+Rule 81 (1)|Approach pedestrian crossing too quickly to stop safely|464|3
+Rule 81 (2)|Not give way to pedestrian on pedestrian crossing|464|3
+Rule 82|Pass/overtake vehicle at pedestrian/children’s crossing|464|3
+Rule 83|Not give way to pedestrian in shared zone|464|3
+Rule 128A|Enter blocked children’s/pedestrian/marked foot crossing|272|2
+#Signs & Road Markings
+Rule 90|Disobey no turns sign|272|2
+Rule 92 (1)|Drive contrary to direction of traffic lane arrow|272|2
+Rule 93 (1)(a)|Pass vehicle contrary to no overtaking or passing sign|272|2
+Rule 95 (1)|Drive in emergency stopping lane|272|2
+Rule 96 (1)|Stop on area marked with keep clear marking|272|2
+Rule 98 (1)|Disobey one-way sign|272|2
+Rule 99 (1)|Disobey keep left sign|272|2
+Rule 100|Disobey no entry sign|272|2
+Rule 101 (1)|Not stop before hand-held stop sign|349|3
+Rule 102 (1)|Proceed past low clearance sign – tunnel/bridge/structure|2400|6
+Rule 104 (3)|Disobey no trucks sign|194|0
+#Roundabouts
+Rule 111 (1)&(2)|Not enter roundabout on left (leave less than halfway)|272|0
+Rule 112 (2)|Before roundabout not give left change of direction signal|194|2
+Rule 113 (2)|Before roundabout not give right change of direction signal|194|2
+Rule 114 (1)(a)|Not give way to vehicle when entering roundabout|349|3
+Rule 115 (1)|Not drive left of traffic island in roundabout|272|2
+Rule 117 (1)|Not give left change of direction signal in roundabout|194|2
+#Lanes & Keeping Left
+Rule 129 (1)|Not drive on far left side of road|272|2
+Rule 130 (1)(a)&(2)|Drive in right lane on road with speed limit over 80 km/h|349|2
+Rule 130 (1)(b)&(2)|Disobey keep left unless overtaking sign|349|2
+Rule 131|Not keep left of oncoming vehicle|349|2
+Rule 132 (1)|Not keep left of centre on two-way road|349|2
+Rule 132 (2)|Not keep left of dividing line|349|3
+Rule 135 (1)|Not keep left of median strip|349|3
+Rule 137 (1)|Drive on dividing strip|272|2
+Rule 138 (1)|Drive on/over continuous line near painted island|272|2
+Rule 146 (1)|Not drive within marked lane – multi-lane road|272|2
+Rule 146 (2)|Not drive within single line of traffic (no lines marked)|272|2
+Rule 147|Move from marked lane to another across continuous line|272|2
+Rule 148 (1)|Not give way (move from marked lane to another)|349|3
+Rule 148A|Not give way (diverges left or right within marked lane)|349|3
+Rule 149|Not give way to vehicle ahead when merging|349|3
+Rule 150 (1)|Drive on/over continuous white edge line|272|2
+Rule 159 (1)|Not drive in lane marked for particular vehicle|349|3
+#Bus, Bike, Tram & Transit Lanes
+Rule 153 (1)|Drive in bicycle lane|194|0
+Rule 154 (1)|Drive in bus lane|349|1
+Rule 155 (1)|Drive in tram lane|272|1
+Rule 156 (1)|Drive in transit lane|272|0
+Rule 157 (1)|Drive in truck lane|349|0
+Rule 157-1 (1)|Drive in a T-Way lane|349|1
+#Overtaking & Following
+Rule 125 (1)|Unreasonably obstruct driver/pedestrian|272|0
+Rule 126|Drive behind other vehicle too closely to stop safely (tailgating)|464|3
+Rule 140|Overtake vehicle when unsafe|349|2
+Rule 141 (1)|Overtake to left of vehicle|194|2
+Rule 142 (1)|Overtake to right of vehicle turning right/making U-turn|349|2
+Rule 144 (a)|Overtake vehicle too closely|349|2
+Rule 144 (b)|Cut in front of vehicle after overtaking|349|2
+Rule 144-1 (1)|Fail to keep safe distance when passing bicycle|349|2
+Rule 145|Increase speed while being overtaken|349|3
+#Seatbelts & Restraints
+Rule 264|Driver not wearing seatbelt|349|3d
+Rule 265 (1)|Passenger (16+) seatbelt not adjusted/fastened|349|0
+Rule 265 (3)|Drive with passenger 16 years or older unrestrained|349|3d
+Rule 265 (3)|Drive with 2 unrestrained passengers|697|6d
+Rule 265 (3)|Drive with 3 unrestrained passengers|1123|6d
+Rule 265 (3)|Drive with 4 or more unrestrained passengers|1472|6d
+Rule 266 (1)|Drive with passenger under 6 months not in approved restraint|349|3d
+Rule 266 (1)|Drive with passenger 6 months to under 4 years not restrained|349|3d
+Rule 266 (1)|Drive with passenger 4 to under 7 years not restrained|349|3d
+Rule 266 (1)|Drive with passenger 7 to under 16 years not restrained|349|3d
+Rule 267-1 (2)(b)|Learner/P1/P2 driver with passenger under 16 not restrained|349|3d
+Rule 268-2 (2)|Driver drive motor vehicle with person/s in/on boot|349|3d
+#Motorcycles
+Rule 151A (2)|Motor bike rider unlawfully lane filter|697|3
+Rule 270 (1)(a)|Ride motorcycle with no helmet (rider alone)|349|3d
+Rule 270 (1)(b)|Ride motorcycle with one unhelmeted passenger|349|3d
+Rule 270 (2)|Motorcycle passenger not wearing helmet|349|0
+Rule 271 (1)(a)|Not sit astride on motorcycle rider’s seat|349|3
+Rule 271 (4)|Ride motorcycle with more than 1 passenger|349|3
+Rule 271-1 (1)|Carry passenger on motor bike (licensed less than 12 months)|349|3
+#Mobile Phones & Distraction
+Rule 297 (1)|Drive without proper control of vehicle|464|3
+Rule 297 (2)|Drive vehicle without clear view|349|3
+Rule 297 (1A)|Drive motor vehicle with person or animal in lap|464|3
+Rule 299 (1)(a)|Drive vehicle with TV/VDU image visible to driver|349|3
+Rule 300|Drive using mobile phone when not permitted (not L, P1 or P2)|349|5d
+Rule 300-1|Learner or Provisional driver use mobile phone while driving|349|5d
+Rule 272 (a)|Passenger interfere with driver’s control of vehicle|116|0
+#General Driving & Crashes
+Rule 224|Use/allow use of horn/warning device unnecessarily|349|0
+Rule 268 (3)|Part of body outside vehicle window/door (driver)|349|3
+Rule 287 (1)&(3)|Not give particulars to police after crash|349|3
+Rule 288 (1)|Drive on path|349|3
+Rule 289 (1)|Drive on nature strip|349|3
+Rule 290|Drive on traffic island|349|3
+Rule 291|Start/drive vehicle causing unnecessary noise/smoke|349|3
+Rule 292 (a)|Drive/tow vehicle with unsecured load|464|3
+Rule 293 (2)|Not remove anything fallen/put on road|464|3
+Rule 294 (2)(b)|Tow trailer when unsafe|464|3
+Rule 296 (1)|Not reverse vehicle safely|194|2
+Rule 298-1|Driver consume alcohol while driving|349|3
+Rule 300-5|Drive motor vehicle not carry licence|116|0
+Rule 304 (1)|Not obey direction of police/authorised person|349|3
+Sec 116 (1)|Burnout|697|3
+Sec 117 (1)(c)|Negligent driving|464|3
+#Lights
+Rule 215-1 (1)|Drive during darkness without prescribed lights|116|1
+Rule 218 (1)(a)|Use high-beam on vehicle in front|116|1
+Rule 218 (1)(b)|Use high-beam on oncoming vehicle|116|1
+Rule 219|Use light on vehicle likely to dazzle|116|1
+Rule 218-1 (f)|Use hazard warning lights when not permitted|116|0
+#Licence (Road Transport Act & Regs)
+Sec 53 (1)(a)|Unlicensed driver (Class C etc / expired under 2 yrs) – 1st offence in 5 yrs|581|0
+Sec 53 (1)(a)|Unlicensed driver (Class C etc / expired under 2 yrs) – 2nd or subsequent|890|0
+Sec 53 (1)(a)|Unlicensed driver (expired over 2 yrs / heavy class) – 1st offence|697|0
+Sec 53 (1)(a)|Unlicensed driver (expired over 2 yrs / heavy class) – 2nd or subsequent|1393|0
+Sec 53 (3)|Unlicensed driver – never held a licence|890|0
+Sec 53 (1)(b)|Permit unlicensed driver – never held a licence|890|0
+Sec 175 (2)(a)|Driver fail/refuse to produce licence/state name/address|116|0
+Sec 175 (2)(b)|Driver state false name/address|116|0
+Cl 15 (1)(a)|Unaccompanied learner|890|0
+Cl 15 (1)(b)|Fail to display ‘L’ plates on car as required|272|2
+Cl 17 (1)(a)|Learner ride motorcycle with other person|272|2
+Cl 119 (1)|P1 driver under 25 drive 11pm–5am with more than 1 passenger under 21|581|7
+Cl 119 (1)|P1/P2 driver carry more than 1 passenger (licence conditions)|581|7
+Cl 119 (1)|Not comply P1 licence – no P plates (Class C)|272|2
+Cl 119 (1)|Fail to comply with licence conditions|272|2
+Cl 122 (1)(b)|Fail to notify change of address within 14 days|116|0
+#Drink & Drug Driving (1st offence)
+Sec 110 (1)(a)|Novice driver drive with novice range PCA – 1st offence|581|0
+Sec 110 (3)(a)|Drive with low range PCA – 1st offence|581|0
+Sec 111 (1)(a)|Drive with illicit drug present in oral fluid/blood/urine – 1st offence|581|0
+#Registration, Insurance & Plates
+Sec 68 (1)|Use unregistered vehicle on road/area|697|0
+Sec 68 (1)|Use unregistered vehicle (heavy vehicle)|1472|4
+Sec 162 (1)|Vehicle not speed limiter compliant|2400|0
+MAC Act Sec 8 (1)|Use uninsured motor vehicle|697|0
+MVT Act Sec 9 (1)(a)|Owner drive/use vehicle with tax unpaid|697|0
+Cl 60 (1)(a)|Use vehicle without correctly fixed/displayed number plate|464|3
+Cl 60 (1)(a)|Use vehicle with obscured/defaced/illegible number plate|464|3
+Cl 129 (1)|Use vehicle with unauthorised number plate|464|3
+Cl 60 (1)(b)(i)|Defective brakes (not emergency brakes)|349|3
+Cl 60 (1)(b)(i)|Defective steering|349|3
+Cl 60 (1)(b)(i)|Seatbelt missing/defective|349|3
+Cl 60 (1)(b)(i)|Use unsafe/unserviced vehicle on road/area|194|0
+Cl 128 (2)|Use vehicle in breach of major defect notice|464|3
+Cl 84(1)|Use modified vehicle on road without compliance certificate|890|0
+Sec 119 (2)|Drive/stand vehicle with speed evasion article|1819|9
+#Bicycles
+Rule 245-1 (1)(c)|Ride bicycle recklessly|464|0
+Rule 250 (1)|Ride bicycle on footpath (16 years or older)|116|0
+Rule 256 (1)|Rider not wear bicycle helmet/fitted/fastened|349|0
+Rule 259 (a)|Ride bicycle without visible front white light|116|0
+Rule 258 (a)|Ride bicycle without working brake|116|0
+Rule 56 (1)(a)|Bicycle: not stop at stop line at red light|464|0
+Rule 247 (1)|Not ride in bicycle lane|116|0`;
+// Law part codes (Judicial Commission of NSW). Standard variant: motor vehicle, not school zone, not camera. "r" = repealed.
+const CODES={"27(1)":82812,"28(1)":82628,"28(1A)":83568,"29":82727,"88(1)":82636,"91(1)":83456,"31(1)&(2)":83313,"31(1)&(4)":83317,"32(1)":82719,"33(1)&(2)":82607,"33(1)&(3)":82608,"89(1)":82848,"91(2)":83514,"37(a)":83412,"37(b)":82761,"38":100898,"39(1)":83458,"39(2)":83540,"40":82705,"41":83590,"42(a)":83714,"42(b)":83574,"132(2A)":83372,"46(1)":83448,"46(1)&(2)":83449,"46(1)&(3)":83450,"48(1)":82746,"48(1)&(2)":82745,"51":82750,"53(1)":82785,"53(3)":82735,"56(1)(a)#1":82914,"56(1)(a)#2":82912,"56(1)(a)#3":87146,"56(2)(a)":83553,"57(1)(a)":83630,"59(1)#1":83403,"59(1)#2":83406,"59(1)#3":83404,"60":83489,"60A(1)":83701,"61(2)":83544,"61(5)":83480,"62(1)(a)":82879,"62(1)(b)(i)":83349,"62(1)(c)":83376,"63(2)":83298,"63(3)":83673,"64(a)":82737,"64(b)":83562,"66(1)":83243,"67(1)":82638,"68(1)#1":83484,"68(1)#2":83482,"69(1)":83578,"71(1)":82835,"72(1)#1":83438,"72(1)#2":83437,"73(1)#1":83474,"73(1)#2":83468,"74(1)(a)":82667,"75(1)(c)":83603,"85(a)":83628,"86(1)":83521,"87(1)":82828,"87(3)":83559,"128":82605,"76(1)":83287,"77(1)":82662,"78(1)":82808,"78(2)":82621,"78-1(2)(a)":95193,"78-1(2)(b)":95194,"79(1)":83301,"164(1)&(2)":83610,"80(1)":82840,"80(2)(b)":83364,"81(1)":82896,"81(2)":83626,"82":82862,"83":83571,"128A":82757,"90":83283,"92(1)":82871,"93(1)(a)":82620,"95(1)":83383,"96(1)":82582,"98(1)":83709,"99(1)":83515,"100":82700,"101(1)":83508,"102(1)":82560,"104(3)":83512,"111(1)&(2)":83290,"112(2)":83249,"113(2)":83425,"114(1)(a)":82748,"115(1)":82615,"117(1)":83623,"129(1)":82693,"130(1)(a)&(2)":83245,"130(1)(b)&(2)":83247,"131":83717,"132(1)":83279,"132(2)":82822,"135(1)":83566,"137(1)":83655,"138(1)":83343,"146(1)":82716,"146(2)":83381,"147":82688,"148(1)":83597,"148A":83358,"149":83265,"150(1)":83727,"159(1)":82885,"153(1)":83633,"154(1)":82791,"155(1)":83485,"156(1)":83537,"157(1)":83302,"157-1(1)":83465,"125(1)":83400,"126":82709,"140":82736,"141(1)":83524,"142(1)":83459,"144(a)":83368,"144(b)":83288,"144-1(1)":87144,"145":83649,"264":100927,"265(1)":83359,"265(3)#1":102356,"265(3)#2":102357,"265(3)#3":102358,"265(3)#4":102359,"266(1)#1":"83326r","266(1)#2":"83327r","266(1)#3":"83324r","266(1)#4":"83325r","267-1(2)(b)":82617,"268-2(2)":83240,"151A(2)":95673,"270(1)(a)":83390,"270(1)(b)":82670,"270(2)":83658,"271(1)(a)":100928,"271(4)":83402,"271-1(1)":82867,"297(1)":83355,"297(2)":82601,"297(1A)":83585,"299(1)(a)":83604,"300":83379,"300-1":88366,"272(a)":83504,"224":82810,"268(3)":83648,"287(1)&(3)":83252,"288(1)":82594,"289(1)":82581,"290":83304,"291":83520,"292(a)":83267,"293(2)":83367,"294(2)(b)":82619,"296(1)":83452,"298-1":82557,"300-5":83509,"304(1)":82843,"215-1(1)":83533,"218(1)(a)":83498,"218(1)(b)":83608,"219":83637,"218-1(f)":82652,"245-1(1)(c)":83271,"250(1)":92732,"256(1)":82631,"259(a)":83454,"258(a)":83501,"247(1)":82578};
+const seen={};
+const D=[];let cat="";
+RAW.split("\n").forEach(l=>{if(l[0]==="#"){cat=l.slice(1);return}const p=l.split("|");
+const k=p[0].replace(/^Rule /,"").replace(/ /g,"");seen[k]=(seen[k]||0)+1;
+let c=CODES[k+"#"+seen[k]]||CODES[k]||"";const rep=/r$/.test(c);c=String(c).replace(/r$/,"");
+D.push({rule:p[0],desc:p[1],fine:+p[2],pts:parseInt(p[3])||0,dbl:/d$/.test(p[3]),cat,code:c,rep})});
+const cats=[...new Set(D.map(d=>d.cat))];
+let active=null;
+const P={left:'<path d="M18 20v-8a4 4 0 0 0-4-4H6M10 4L6 8l4 4"/>',right:'<path d="M6 20v-8a4 4 0 0 1 4-4h8M14 4l4 4-4 4"/>',u:'<path d="M6 20V9a5 5 0 0 1 10 0v9M12 14l4 4 4-4"/>',sig:'<path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/>',tl:'<rect x="8" y="2" width="8" height="20" rx="2"/><circle cx="12" cy="7" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="17" r="1.4"/>',lane:'<path d="M8 3L4 21M16 3l4 18M12 4v3M12 10v4M12 17v3"/>',rb:'<path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/>',belt:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',moto:'<circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10L9 7H7M14 10l1-3h2"/>',phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',bike:'<circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-8h5l3 8M10 8H8M15 8l-3 8"/>',ovt:'<path d="M3 8h12M11 4l4 4-4 4M3 17h18M17 13l4 4-4 4"/>',bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5V16h8v-2.5A6 6 0 0 0 12 3z"/>',lic:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c0-2 6-2 6 0"/>',ban:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/>',doc:'<path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/>',ped:'<circle cx="12" cy="5" r="2"/><path d="M12 8v6l-3 6M12 14l3 6M8 11l4-3 4 3"/>',siren:'<path d="M7 18v-6a5 5 0 0 1 10 0v6M5 18h14M12 3v2M4 8l1.5 1M20 8l-1.5 1"/>',bus:'<rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16"/><circle cx="8" cy="19.5" r="1.2"/><circle cx="16" cy="19.5" r="1.2"/>',stop:'<polygon points="8 3 16 3 21 8 21 16 16 21 8 21 3 16 3 8"/><path d="M8 12h8"/>',car:'<path d="M5 16v-4l2-5h10l2 5v4M3 16h18v3H3zM7 12h10"/>'};
+function icon(c){const k=/^Left/.test(c)?'left':/^Right/.test(c)?'right':/U-Turn/.test(c)?'u':/Signal/.test(c)?'sig':/Traffic Lights/.test(c)?'tl':/Lanes &/.test(c)?'lane':/Roundabout/.test(c)?'rb':/Seatbelt/.test(c)?'belt':/Motorcycle/.test(c)?'moto':/Mobile/.test(c)?'phone':/Bicycle/.test(c)?'bike':/Overtaking/.test(c)?'ovt':/^Lights/.test(c)?'bulb':/Licence/.test(c)?'lic':/Drink/.test(c)?'ban':/Registration/.test(c)?'doc':/Crossings/.test(c)?'ped':/Emergency/.test(c)?'siren':/^Bus,/.test(c)?'bus':/Signs/.test(c)?'stop':'car';return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>'}
+const $=id=>document.getElementById(id);
+const q=$("q"),list=$("list"),meta=$("meta"),chips=$("bar"),clr=$("clr");
+const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const norm=s=>s.toLowerCase().replace(/[–-]/g,"-").replace(/’/g,"'");
+function hl(s,ts){let o=esc(s);ts.forEach(t=>{if(t.length<2)return;const r=new RegExp("("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig");o=o.replace(r,"<mark>$1</mark>")});return o}
+function render(){
+ const ts=norm(q.value.trim()).split(/\s+/).filter(Boolean);
+ clr.style.display=q.value?"block":"none";
+ buildBar();
+ if(!ts.length&&!active){home();return}
+ const rows=D.filter(d=>(!active||d.cat===active)&&ts.every(t=>norm(d.rule+" "+d.desc+" "+d.cat+" $"+d.fine+" "+d.pts+"pts "+d.code).includes(t)));
+ clr.style.display=q.value?"block":"none";
+ meta.textContent=rows.length+" offence"+(rows.length===1?"":"s")+(active?" in "+active:"");
+ if(!rows.length){list.innerHTML='<div class="empty">No offences found.<br>Try a different word, a rule number, or another category.</div>';return}
+ let h="",last="";
+ rows.forEach(d=>{
+  if(d.cat!==last){h+='<div class="grp">'+esc(d.cat)+'</div>';last=d.cat}
+  h+='<div class="card"><div class="l"><span class="rule">'+hl(d.rule,ts)+'</span><div class="desc">'+hl(d.desc,ts)+'</div>'+(d.code?'<div class="code">Law part code <b>'+hl(d.code,ts)+'</b>'+(d.rep?'<i>repealed</i>':'')+'</div>':'')+'</div><div class="r"><div class="fine">$'+d.fine.toLocaleString("en-AU")+'</div>'+
+  (d.pts?'<br><span class="pts">'+d.pts+' demerit'+(d.pts>1?'s':'')+'</span>':'')+(d.dbl?'<div class="dbl">Double demerits</div>':'')+'</div></div>'});
+ list.innerHTML=h}
+function buildBar(){
+ chips.innerHTML=active?'<button class="back" id="back">‹ Categories</button><span class="ct">'+esc(active)+'</span>':""}
+function home(){
+ meta.textContent="Choose a category";
+ list.innerHTML='<div class="tiles">'+cats.map(c=>'<button class="tile" data-c="'+esc(c)+'"><span class="ic">'+icon(c)+'</span><span class="nm">'+esc(c)+'</span><span class="n">'+D.filter(d=>d.cat===c).length+' offences</span></button>').join("")+'</div>'}
+list.onclick=e=>{const b=e.target.closest(".tile");if(!b)return;active=b.dataset.c;q.value="";render();window.scrollTo({top:0})};
+chips.onclick=e=>{if(!e.target.closest(".back"))return;active=null;q.value="";render();window.scrollTo({top:0})};
+q.oninput=render;
+clr.onclick=()=>{q.value="";render();q.focus()};
+render();
+</script>
+</body>
+</html>
