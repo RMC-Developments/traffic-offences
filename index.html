@@ -73,7 +73,7 @@ footer a{color:var(--acc);font-size:13px;font-weight:600;display:inline-block;ma
 <header>
 <button class="info" id="infoBtn" aria-label="About and privacy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg></button>
 <button class="info" id="themeBtn" aria-label="Change theme"></button>
-<h1>Traffic Offences<small>NSW penalties &amp; demerit points · as at 1 July 2020</small></h1>
+<h1>Traffic Offences<small>NSW penalties &amp; demerit points · as at 1 July 2025</small></h1>
 <div class="search">
 <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
 <input id="q" type="search" placeholder="Search offence, rule, section or code…" autocomplete="off" autocorrect="off" enterkeyhint="search">
@@ -87,253 +87,1039 @@ footer a{color:var(--acc);font-size:13px;font-weight:600;display:inline-block;ma
 <script>
 // Format: rule|description|fine|demerit points (append "d" = double demerit offence)
 const RAW=`#Left Turn
-Rule 27 (1)|Not turn left from far left side of road|272|2
-Rule 28 (1)|Not turn left from multi-lane road from within left lane|272|2
-Rule 28 (1A)|Not turn left from slip lane from multi-lane road|272|2
-Rule 29|Turn left contrary to turn line|272|2
-Rule 88 (1)|Disobey left turn only sign|272|2
-Rule 91 (1)|Disobey no left turn sign|272|2
+Rule 27 (1)|Not turn left from far left side of road|330|2|82812
+Rule 28 (1)|Not turn left from multi-lane road from within left lane|330|2|82628
+Rule 28 (1A)|Not turn left from slip lane from multi-lane road|330|2|83568
+Rule 29|Turn left contrary to turn line|330|2|82727
 #Right Turn
-Rule 31 (1)&(2)|Not turn right from left of line/strip correctly|272|2
-Rule 31 (1)&(4)|Not turn right from far right side of one-way road|272|2
-Rule 32 (1)|Not turn right from multi-lane road from within right lane|272|2
-Rule 33 (1)&(2)|Turn right contrary to road marking|272|2
-Rule 33 (1)&(3)|Not turn right near to right of centre of intersection|272|2
-Rule 89 (1)|Disobey right turn only sign|272|2
-Rule 91 (2)|Disobey no right turn sign|272|2
+Rule 31 (1)&(2)|Not turn right from left of line/strip correctly|330|2|83313
+Rule 31 (1)&(3)|Not turn right from left of centre of road correctly|330|2|83314
+Rule 31 (1)&(4)|Not turn right from far right side of one-way road|330|2|83317
+Rule 32 (1)|Not turn right from far multi-lane road from within right lane|330|2|82719
+Rule 33 (1)&(2)|Turn right contrary to road marking|330|2|82607
+Rule 33 (1)&(3)|Not turn right near to right of centre of intersection|330|2|82608
 #U-Turns
-Rule 37 (a)|Begin U-turn without view of approaching traffic|272|2
-Rule 37 (b)|Not safely begin U-turn without obstructing traffic|272|2
-Rule 38|Make U-turn without giving way to vehicle/pedestrian|349|3
-Rule 39 (1)|Make U-turn at break in dividing strip contrary to sign|272|2
-Rule 39 (2)|Make U-turn on length of road contrary to sign|272|2
-Rule 40|Make U-turn at intersection with traffic lights|272|2
-Rule 41|Make U-turn at intersection (no lights) contrary to sign|272|2
-Rule 42 (a)|Not start U-turn in lane nearest dividing line/median strip|272|2
-Rule 42 (b)|Not start U-turn from left of centre of road|272|2
-Rule 132 (2A)|Drive across dividing lines to perform U-turn|349|3
+Rule 37 (a)|Begin U-turn without view of approaching traffic|330|2s|83412
+Rule 37 (b)|Driver not safely begin U-turn without obstructing traffic|330|2s|82761
+Rule 38 (1)|Make U-turn without giving way to vehicle/pedestrian|423|3s|100898
+Rule 39 (1)|Make U-turn at break in dividing strip contrary to sign|330|2s|83458
+Rule 39 (2)|Make U-turn on length of road contrary to sign|330|2s|83540
+Rule 40|Make U-turn at intersection with traffic lights|330|2s|82705
+Rule 41|Make U-turn at intersection (no lights) contrary to sign|330|2s|83590
+Rule 42 (a)|Not start U-turn in lane in nearest dividing line/median strip|330|2s|83714
+Rule 42 (b)|Not start U-turn from left of centre of road|330|2s|83574
+Rule 43(a)|Make U-turn at children's crossing|330|2s|100900
+Rule 43(b)|Make U-turn at level crossing|330|2s|100901
+Rule 43(c)|Make U-turn at marked foot crossing|330|2s|100903
+Rule 43(d)|Make U-turn at pedestrian crossing|330|2s|100905
+Rule 43A|Make U-turn on road related area with traffic lights|330|2s|100907
 #Signals & Indicators
-Rule 46 (1)|Not give left change of direction signal with lights|194|2
-Rule 46 (1)&(2)|Not give sufficient left change of direction signal|194|2
-Rule 46 (1)&(3)|Give left change of direction signal (less than 5 seconds)|194|2
-Rule 48 (1)|Not give right change of direction signal with lights|194|2
-Rule 48 (1)&(2)|Not give sufficient right change of direction signal|194|2
-Rule 51|Operate indicator light contrary to permitted use|194|0
-Rule 53 (1)|Not give stop signal with brake lights/signal/device|194|2
-Rule 53 (3)|Not give stop signal when slowing suddenly|194|2
+Rule 46 (1)|Not give left change of direction signal with lights|235|2|83448
+Rule 46 (1)&(2)|Not give sufficient left change of direction signal|235|2|83449
+Rule 46 (1)&(3)|Give left change of direction signal (less than 5 seconds)|235|2|83450
+Rule 46 (4)|Not stop left change of direction signal after change|235|0|82708
+Rule 48 (1)|Not give right change of direction signal with lights|235|2|82746
+Rule 48 (1)&(2)|Not give sufficient right change of direction signal|235|2|82745
+Rule 48 (1)&(3)|Give right change of direction signal (less than 5 seconds)|235|2|82747
+Rule 48 (4)|Not stop right change of direction signal after change|235|0|82794
+Rule 51|Operate indicator light contrary to permitted use|235|0|82750
+Rule 53 (1)|Not give stop signal with brake lights/signal/device|235|2|82785
+Rule 53 (2)|Not give sufficient warning of stopping|235|2|83308
+Rule 53 (3)|Not give stop signal when slowing suddenly|235|2|82735
 #Traffic Lights
-Rule 56 (1)(a)|Not stop at stop line at red light|464|3
-Rule 56 (1)(a)|Not stop at stop line at red light – toll booth|194|0
-Rule 56 (2)(a)|Not stop at stop line at red arrow|464|3
-Rule 57 (1)(a)|Not stop at stop line at yellow light|464|3
-Rule 59 (1)|Proceed through red traffic light|464|3
-Rule 59 (1)|Proceed through red traffic light (camera detected)|464|3
-Rule 59 (1)|Proceed through red traffic light – toll booth|194|0
-Rule 60|Proceed through red traffic arrow|464|3
-Rule 60A (1)|Motor vehicle enter bicycle storage area showing red light|464|3
-Rule 61 (2)|Proceed after light change while stopped|464|3
-Rule 61 (5)|Not leave intersection after light/arrow goes yellow/red|464|3
-Rule 62 (1)(a)|Not give way at lights to pedestrian on road|349|3
-Rule 62 (1)(b)(i)|Not give way at lights to other vehicle (left turn)|349|3
-Rule 62 (1)(c)|Not give way at lights to oncoming vehicle (right turn)|349|3
-Rule 63 (2)|Not stop at traffic lights – stop sign (lights not operating)|349|3
-Rule 63 (3)|Not give way to oncoming vehicle (right turn, lights flashing)|349|3
-Rule 64 (a)|Not give way to vehicle (flashing yellow arrow)|349|3
-Rule 64 (b)|Not give way to pedestrian (flashing yellow arrow)|464|3
-Rule 66 (1)|Not stop before lights (twin red lights)|464|3
+Rule 56 (1)(a)|Not stop at stop line at red light|562|3s|82914
+Rule 56 (1)(a)|Not stop at stop line at red light - toll booth|235|0|82912
+Rule 56 (1)(b)|Not stop before stop sign at red light|562|3s|
+Rule 56 (1)(b)|Not stop before stop sign at red light - toll booth|235|0|82888
+Rule 56 (1)(c)|Not stop before lights at red light|562|3s|
+Rule 56 (1)(c)|Not stop before lights at red light - toll booth|235|0|83698
+Rule 56 (2)(a)|Not stop at stop line at red arrow|562|3s|83553
+Rule 56 (2)(b)|Not stop before stop sign at red arrow|562|3s|82777
+Rule 56 (2)(c)|Not stop before lights at red arrow|562|3s|82832
+Rule 57 (1)(a)|Not stop at stop line at yellow light|562|3s|83630
+Rule 57 (1)(b)|Not stop before traffic lights at yellow light|562|3s|82901
+Rule 57 (1)(c)|Not stop before intersection at yellow light|562|3s|83461
+Rule 57 (2)(a)|Not stop at stop line at yellow arrow|562|3s|82904
+Rule 57 (2)(b)|Not stop before traffic lights at yellow arrow|562|3s|83607
+Rule 57 (2)(c)|Not stop before intersection at yellow arrow|562|3s|82907
+Rule 57 (3)|Not leave intersection safely after yellow arrow|562|3s|82712
+Rule 59 (1)|Proceed through red traffic light|562|3s|83403
+Rule 59 (1)|Proceed through red traffic light (camera detected)|562|3s|83406
+Rule 59 (1)|Proceed through red traffic light - toll booth|235|0|83404
+Rule 60|Proceed through red traffic arrow|562|3s|83489
+Rule 60A (1)|Motor vehicle enter bicycle storage area showing red light|562|3s|83701
+Rule 60A (2)|Motor vehicle enter bicycle storage area showing red arrow|562|3s|83722
+Rule 61 (2)|Proceed after light change while stopped|562|3s|83544
+Rule 61 (5)|Not leave intersection after light/arrow goes yellow/red|562|3s|83480
+Rule 62 (1)(a)|Not give way at lights to pedestrian on road|423|3s|82879
+Rule 62 (1)(b)(i)|Not give way at lights to other vehicle (left turn)|423|3s|83349
+Rule 62 (1)(b)(ii)|Not give way at lights to other pedestrian (left turn)|423|3s|83719
+Rule 62 (1)(c)|Not give way at lights to oncoming vehicle (right turn)|423|3s|83376
+Rule 63 (2)|Not stop at traffic lights - stop sign|423|3s|83298
+Rule 63 (2)|Not give way to vehicle at traffic light - stop sign|423|3s|83299
+Rule 63 (2)|Not give way to pedestrian at traffic light - stop sign|423|3s|83295
+Rule 63 (3)|Not give way to vehicle (left turn from slip lane)|423|3s|83677
+Rule 63 (3)|Not give way to pedestrian (left turn from slip lane)|423|3s|83678
+Rule 63 (3)|Not give way to vehicle (right turn)|423|3s|83669
+Rule 63 (3)|Not give way to oncoming vehicle (right turn)|423|3s|83673
+Rule 63 (3)|Not give way to pedestrian (right turn)|423|3s|83693
+Rule 63 (3)|Not give way at intersection to vehicle on right|423|3s|83686
+Rule 63 (3)|Not give way to vehicle - left turn|423|3s|83694
+Rule 63 (3)|Not give way to vehicle at T-Intersection|423|3s|83670
+Rule 63 (3)|Not give way to pedestrian at T-Intersection|423|3s|83672
+Rule 63 (3)|Not give way to vehicle at T-Intersection (slip lane)|423|3s|83674
+Rule 63 (3)|Not give way to pedestrian at T-Intersection (slip lane)|423|3s|83689
+Rule 63 (3)|Not give way to vehicle (right turn at terminating road)|423|3|83685
+Rule 63 (3)|Not give way to pedestrian (right turn at terminating road)|423|3|83666
+Rule 63 (3)|Not give way to pedestrian at T-Intersection (left turn)|423|3s|83668
+Rule 63 (3)|Not give way to vehicle - slip lane at terminating road|423|3s|83684
+Rule 63 (3)|Not give way to pedestrian - slip lane at terminating road|423|3s|83683
+Rule 64 (a)|Not give way to vehicle (flashing yellow arrow)|423|3s|82737
+Rule 64 (b)|Not give way to pedestrian (flashing yellow arrow)|562|3s|83562
+Rule 64 (c)|Not give way to oncoming vehicle (flashing yellow arrow)|423|3s|82564
+Rule 65 (2)(a)|Not give way to pedestrian - (flashing yellow light)|423|3s|82633
+Rule 65 (2)(b)|Obstruct pedestrian - (flashing yellow light)|423|3s|82603
+Rule 65 (2)(c)|Overtake/pass vehicle - (flashing yellow light)|562|3s|83503
+Rule 66 (1)|Not stop before lights (twin red lights)|562|3|83243
+Rule 66 (1)|Not stop before stop line (twin red lights)|562|3|
+Rule 66 (4)|Proceed after stopping at twin red lights|562|3|82796
+Rule 274|Not stop on red T light|562|3|83357
+Rule 275|Not stop on yellow T light|562|3|82625
+Rule 277|Proceed before allowed after stop on red/yellow T Light|562|3|82875
+Rule 279 (2)|Proceed before allowed after stop on white T light/arrow|562|3|82575
+Rule 279 (3)|Not leave intersection safely (white T light/arrow)|562|3|82646
+Rule 281|Not stop on red B light|562|3|83341
+Rule 282|Not stop on yellow B light|562|3|83582
+Rule 284|Proceed before allowed after stop on red/yellow B light|562|3|83589
+Rule 286 (2)|Proceed before allowed after stop on white B light/arrow|562|3|82558
+Rule 286 (3)|Not leave intersection safely (white B light/arrow)|562|3|83594
 #Give Way, Stop Signs & Intersections
-Rule 67 (1)|Not stop at stop line – intersection with no lights|349|3
-Rule 68 (1)|Not stop at/before stop line/stop sign|349|3
-Rule 68 (1)|Not give way to vehicle/pedestrian (stop sign)|349|3
-Rule 69 (1)|Not give way to vehicle (give way sign/line)|349|3
-Rule 71 (1)|Not give way to vehicle/pedestrian (give way sign/line)|349|3
-Rule 72 (1)|Not give way to vehicle on right (travelling straight – unmarked intersection)|349|3
-Rule 72 (1)|Not give way to oncoming vehicle (unmarked intersection)|349|3
-Rule 73 (1)|Not give way to vehicle – turn from terminating road (T-intersection)|349|3
-Rule 73 (1)|Not give way to vehicle – right turn into terminating road|349|3
-Rule 74 (1)(a)|Leave road related area/adjacent land – not give way to vehicle on road|349|3
-Rule 75 (1)(c)|Not give way to vehicle – right turn into area/land|349|3
-Rule 85 (a)|Not give way to vehicle in turning lane|349|3
-Rule 86 (1)|Not give way to vehicle (median turning bay)|349|3
-Rule 87 (1)|Not give way to vehicle (enter road from side/shoulder)|349|3
-Rule 87 (3)|Not give way to vehicle (enter road from parking area)|349|3
-Rule 128|Enter intersection when intersection/road beyond blocked|272|0
+Rule 67 (1)|Not stop at stop line - intersection with no lights|423|3s|82638
+Rule 67 (1)|Not give way to vehicle - intersection with no lights|423|3s|82639
+Rule 67 (1)|Not give way to pedestrian - intersection with no lights|423|3s|82640
+Rule 68 (1)|Not stop at/before stop line/stop sign|423|3s|83484
+Rule 68 (1)|Not give way to vehicle/pedestrian (stop sign)|423|3s|83482
+Rule 69 (1)|Not give way to vehicle (give way sign/line)|423|3s|83578
+Rule 69 (1)|Not give way at pedestrian (give way sign/line)|423|3s|83580
+Rule 70|Disobey give way sign on bridge/narrow road|423|3s|83661
+Rule 71 (1)|Not give way to vehicle/pedestrian (give way sign/line)|423|3s|82835
+Rule 72 (1)|Not give way to vehicle on right (travelling straight-unmarked intersection)|423|3|83438
+Rule 72 (1)|Not give way to vehicle (left turn-unmarked intersection)|423|3|83434
+Rule 72 (1)|Not give way to pedestrian (left turn-unmarked intersection)|423|3|83440
+Rule 72 (1)|Not give way to vehicle (slip turn-unmarked intersection)|423|3|83439
+Rule 72 (1)|Not give way to pedestrian (slip turn-unmarked intersection)|423|3|
+Rule 72 (1)|Not give way to vehicle on right (right turn-unmarked intersection)|423|3|83436
+Rule 72 (1)|Not give way to oncoming vehicle|423|3|
+Rule 72 (1)|Not give way to pedestrian|423|3|
+Rule 73 (1)|Not give way to vehicle - turn from terminating road|423|3|83474
+Rule 73 (1)|Not give way to pedestrian - turn from terminating road|423|3|83475
+Rule 73 (1)|Not give way to vehicle - left turn from slip lane|423|3|83470
+Rule 73 (1)|Not give way to pedestrian - left turn from slip lane|423|3|83471
+Rule 73 (1)|Not give way to pedestrian - left turn into terminating road|423|3|83472
+Rule 73 (1)|Not give way to vehicle - slip turn into terminating road from slip lane|423|3|83473
+Rule 73 (1)|Not give way to pedestrian - slip turn into terminating road|423|3|83469
+Rule 73 (1)|Not give way to vehicle - right turn into terminating road|423|3|83468
+Rule 73 (1)|Not give way to pedestrian - right turn into terminating road|423|3|83467
+Rule 74 (1)(a)|Leave road related area/adjacent land-not give way to vehicle on road|423|3|82667
+Rule 74 (1)(b)|Leave road related area/adjacent land-not give way to pedestrian on road|423|3|83415
+Rule 74 (1)(c)|Leave road related area/adjacent land-not give way to pedestrian/vehicle|423|3|
+Rule 74 (1)(d)(i)|Not give way to pedestrian on area when leaving|423|3|83505
+Rule 74 (1)(d)(ii)|Not give way to vehicle on area when leaving|423|3|83505
+Rule 74 (1)(aa)|Enter road not give way to driver making U-turn on road|423|3|100909
+Rule 75 (1)(a)|Enter area/land-not give way to pedestrian on road|423|3|83399
+Rule 75 (1)(b)|Not give way on area when entering|423|3|
+Rule 75 (1)(c)|Not give way to vehicle-right turn into area/land|423|3|83603
+Rule 75 (1)(d)|Not give way to vehicle-enter area/land at T-Intersection|423|3|83366
+Rule 83|Not give way to pedestrian in shared zone|562|3|83571
+Rule 84 (1)(a)|Not give way to tram (drive through dividing strip break)|423|3|82653
+Rule 84 (1)(b)|Not give way to vehicle (drive through dividing strip break)|423|3|82717
+Rule 85 (a)|Not give way to vehicle in turning lane|423|3|83628
+Rule 85 (b)|Not give way to vehicle entering turning lane (to right)|423|3|82637
+Rule 85 (c)|Not give way to vehicle entering turning lane (to left)|423|3|83586
+Rule 86 (1)|Not give way to vehicle (median turning bay)|423|3|83521
+Rule 87 (1)|Not give way to vehicle (enter road from side/shoulder)|423|3|82828
+Rule 87 (3)|Not give way to vehicle (enter road from parking area)|423|3|83559
 #Emergency Vehicles, Trams & Buses
-Rule 76 (1)|Drive into path of approaching tram|349|3
-Rule 77 (1)|Driver in left lane/traffic line not give way to bus|349|3
-Rule 78 (1)|Move into path of police or emergency vehicle|464|3
-Rule 78 (2)|Not move out of path of police/emergency vehicle|464|3
-Rule 78-1 (2)(a)|Drive past stationary emergency vehicle – speed limit under 80 km/h|464|3
-Rule 78-1 (2)(b)|Drive past stationary emergency vehicle – 80 km/h or over|464|3
-Rule 79 (1)|Not give way to police/emergency vehicle|464|3
-Rule 164 (1)&(2)|Not give way to pedestrian near stopped tram|194|2
+Rule 76 (1)|Drive into path of approaching tram|423|3|83287
+Rule 76 (2)|Not move out of path of approaching tram|423|3|83441
+Rule 77 (1)|Driver in left lane/traffic line not give way to bus|423|3|82662
+Rule 78 (1)|Move into path of police or emergency vehicle|562|3|82808
+Rule 78 (2)|Not move out of path of police/emergency vehicle|562|3|82621
+Rule 78-1 (1)|Fail to give way to person near stationary emergency response vehicle|562|3|92147
+Rule 78-1 (2)(a)|Drive past stationary emergency response vehicle - speed limit less than 80 km/h|562|3|95193
+Rule 78-1 (2)(b)|Drive past stationary emergency response vehicle - speed equal to/exceeds 80 km/h|562|3|95194
+Rule 78-1 (3)|Increase speed when passing stationary emergency response vehicle|562|3|92149
+Rule 79 (1)|Not give way to police/emergency vehicle|562|3|83301
+Rule 79-1 (a)|Interfere/interrupt passage of funeral cortege/procession|140|0|82579
+Rule 79-1 (b)|Interfere/interrupt vehicle in funeral cortege/procession|140|0|83401
+Rule 79-2|At ferry/punt/bridge/railway crossing not wait at left end of line|140|0|
+Rule 160 (2)|Pass/overtake to right of tram|140|0|82597
+Rule 160 (3)|Pass/overtake tram turning/signalling left|140|0|82591
+Rule 161 (2)|Pass/overtake to left of tram|140|0|83612
+Rule 161 (3)|Pass/overtake tram turning/signalling right|140|0|83385
+Rule 162 (1)(a)|Drive on safety zone|235|2|82713
+Rule 163 (1)(b)|Not drive safely to left of safety zone|235|2|
+Rule 163 (1)&(2)|Drive past rear of stopped tram when pedestrian is crossing|235|2|83534
+Rule 164 (1)&(2)|Not give way to pedestrian near stopped tram|235|2|83610
+Rule 164 (1)&(3)|Proceed near stopped tram (road not clear of pedestrians)|235|2|83611
+Rule 164 (1)&(4)|Pass/overtake stopped tram at prohibited speed|235|2|83609
+Rule 164A|Drive past safety zone/stopped tram|235|2|83337
+Rule 164A|Fail to give way to pedestrian crossing near stopped tram|235|2|83338
 #Pedestrian & Children’s Crossings
-Rule 80 (1)|Approach children’s crossing too quickly to stop safely|464|3
-Rule 80 (2)(b)|Not stop at children’s crossing – pedestrian on crossing|464|3
-Rule 81 (1)|Approach pedestrian crossing too quickly to stop safely|464|3
-Rule 81 (2)|Not give way to pedestrian on pedestrian crossing|464|3
-Rule 82|Pass/overtake vehicle at pedestrian/children’s crossing|464|3
-Rule 83|Not give way to pedestrian in shared zone|464|3
-Rule 128A|Enter blocked children’s/pedestrian/marked foot crossing|272|2
+Rule 80 (1)|Approach children’s crossing too quickly to stop safely|562|3s|82840
+Rule 80 (2)(a)|Disobey hand-held stop sign at children’s crossing|562|3s|82815
+Rule 80 (2)(b)|Not stop at children’s crossing-pedestrian on crossing|562|3s|83364
+Rule 80 (3)(a)|Proceed at children’s crossing while sign shown|562|3s|82881
+Rule 80 (3)(b)|Proceed at children’s crossing contrary to directions|562|3s|83620
+Rule 80 (4)|Proceed at children’s crossing-pedestrian at crossing|562|3s|82568
+Rule 81 (1)|Approach pedestrian crossing too quickly to stop safely|562|3s|82896
+Rule 81 (2)|Not give way to pedestrian on pedestrian crossing|562|3s|83626
+Rule 82|Pass/overtake vehicle at pedestrian/children’s crossing|562|3s|82862
+#Level Crossings
+Rule 121 (a)|Not stop at stop line/sign at level crossing|562|3|82788
+Rule 121 (b)|Not give way to train/tram at level crossing with stop sign|562|3|83293
+Rule 122|Disobey give way sign/line at level crossing|562|3|83303
+Rule 123 (a)|Enter level crossing contrary to lights/bells|562|3|82787
+Rule 123 (b)|Enter level crossing with gate/boom/barrier operating|562|3|83715
+Rule 123 (c)|Enter level crossing when train/tram on/entering crossing|562|3|83636
+Rule 123 (d)|Enter level crossing when approaching train/tram seen/heard|562|3|83703
+Rule 123 (e)|Enter level crossing when crossing/road beyond blocked|562|3|83721
+Rule 124|Not leave level crossing when safe|562|3|83384
 #Signs & Road Markings
-Rule 90|Disobey no turns sign|272|2
-Rule 92 (1)|Drive contrary to direction of traffic lane arrow|272|2
-Rule 93 (1)(a)|Pass vehicle contrary to no overtaking or passing sign|272|2
-Rule 95 (1)|Drive in emergency stopping lane|272|2
-Rule 96 (1)|Stop on area marked with keep clear marking|272|2
-Rule 98 (1)|Disobey one-way sign|272|2
-Rule 99 (1)|Disobey keep left sign|272|2
-Rule 100|Disobey no entry sign|272|2
-Rule 101 (1)|Not stop before hand-held stop sign|349|3
-Rule 102 (1)|Proceed past low clearance sign – tunnel/bridge/structure|2400|6
-Rule 104 (3)|Disobey no trucks sign|194|0
+Rule 88 (1)|Disobey left turn only sign|330|2|82636
+Rule 88 (2)|Disobey left lane must turn left sign|330|2|82571
+Rule 89 (1)|Disobey right turn only sign|330|2|82848
+Rule 89 (2)|Disobey right lane must turn right sign|330|2|83523
+Rule 90|Disobey no turns sign|330|2|83283
+Rule 91 (1)|Disobey no left turn sign|330|2|83456
+Rule 91 (2)|Disobey not right turn sign|330|2|83514
+Rule 92 (1)|Drive contrary to direction of traffic lane arrow|330|2|82871
+Rule 93 (1)(a)|Pass vehicle contrary to no overtaking or passing sign|330|2|82620
+Rule 93 (1)(b)|Overtake vehicle contrary to no overtaking or passing sign|330|2|82645
+Rule 94|Disobey no overtaking on bridge sign|330|2|83352
+Rule 95 (1)|Drive in emergency stopping lane|330|2|83383
+Rule 96 (1)|Stop on area marked with keep clear marking|330|2|82582
+Rule 97 (1)|Disobey road access sign|330|2|83344
+Rule 98 (1)|Disobey one-way sign|330|2|83709
+Rule 99 (1)|Disobey keep left sign|330|2|83515
+Rule 99 (2)|Disobey keep right sign|330|2|82752
+Rule 100|Disobey no entry sign|330|2|82700
+Rule 101 (1)|Not stop before hand-held stop sign|423|3s|83508
+Rule 101 (2)(a)|Proceed past hand-held stop sign while sign shown|423|3s|82677
+Rule 101 (2)(b)|Proceed past hand-held stop sign contrary to directions|423|3s|82596
+Rule 101A|Drive on safety ramp or arrester bed|330|0|83322
+Rule 102 (1)|Disobey clearance/low clearance sign|235|0|82559
+Rule 102 (1)|Disobey clearance/low clearance sign - tunnel/bridge/other structure|4783|12|82560
+Rule 103 (1)|Disobey bridge load limit (gross mass) sign|330|0|83339
+Rule 103 (1)|Disobey gross load limit sign|330|0|83340
+Rule 103 (2)|Disobey bridge load limit (mass per axle group) sign|330|0|83650
+Rule 104 (1)|Disobey no trucks sign (GVM)|235|0|83708
+Rule 104 (2)|Disobey no trucks sign (length)|235|0|83495
+Rule 104 (3)|Disobey no trucks sign|235|0|83512
+Rule 104 (2)|Disobey no trucks sign (length) (where the sign is in relation to Galston Gorge)|4783|12|83494
+Rule 105|Disobey trucks must enter sign|844|0|82626
+Rule 106 (1)|Disobey no buses sign (GVM)|235|0|83268
+Rule 106 (2)|Disobey no buses sign (length)|235|0|83369
+Rule 106 (2)|Disobey no buses sign (length)(where the sign is in relation to Galston Gorge)|4783|12|88835
+Rule 106 (3)|Disobey no buses sign|235|0|83311
+Rule 107|Disobey buses must enter sign|844|0|83560
+Rule 108 (1)|Disobey trucks and buses low gear sign|423|3|83397
 #Roundabouts
-Rule 111 (1)&(2)|Not enter roundabout on left (leave less than halfway)|272|0
-Rule 112 (2)|Before roundabout not give left change of direction signal|194|2
-Rule 113 (2)|Before roundabout not give right change of direction signal|194|2
-Rule 114 (1)(a)|Not give way to vehicle when entering roundabout|349|3
-Rule 115 (1)|Not drive left of traffic island in roundabout|272|2
-Rule 117 (1)|Not give left change of direction signal in roundabout|194|2
+Rule 111 (1)&(2)|Not enter roundabout on left (leave less than halfway)|330|0|83290
+Rule 111 (1)&(3)|Not enter roundabout on right (leave more than halfway)|330|0|83289
+Rule 111 (1)&(5)|Not enter roundabout in direction of traffic lane arrow|330|0|83291
+Rule 112 (2)|Before roundabout not give left change of direction signal|235|2|83249
+Rule 112 (3)|Not maintain left change of direction signal in roundabout|235|2|83414
+Rule 113 (2)|Before roundabout not give right change of direction signal|235|2|83425
+Rule 113 (3)|Not maintain right change of direction signal in roundabout|235|2|83336
+Rule 114 (1)(a)|Not give way to vehicle when entering roundabout|423|3|82748
+Rule 114 (1)(b)|Not give way to tram when entering roundabout|423|3|83237
+Rule 114 (2)|Not give way to tram when driving in roundabout|423|3|83429
+Rule 115 (1)|Not drive left of traffic island in roundabout|330|2|82615
+Rule 116|Not drive in roundabout in direction of traffic lane arrow|330|0|82649
+Rule 117 (1)|Not give left change of direction signal in roundabout|235|2|83623
+Rule 117 (2)|Not give right change of direction signal in roundabout|235|2|82838
+Rule 118 (1)|Not give left change of direction signal (exit roundabout)|235|2|82803
+Rule 118 (2)|Not stop left change of direction signal (exit roundabout)|235|0|82900
 #Lanes & Keeping Left
-Rule 129 (1)|Not drive on far left side of road|272|2
-Rule 130 (1)(a)&(2)|Drive in right lane on road with speed limit over 80 km/h|349|2
-Rule 130 (1)(b)&(2)|Disobey keep left unless overtaking sign|349|2
-Rule 131|Not keep left of oncoming vehicle|349|2
-Rule 132 (1)|Not keep left of centre on two-way road|349|2
-Rule 132 (2)|Not keep left of dividing line|349|3
-Rule 135 (1)|Not keep left of median strip|349|3
-Rule 137 (1)|Drive on dividing strip|272|2
-Rule 138 (1)|Drive on/over continuous line near painted island|272|2
-Rule 146 (1)|Not drive within marked lane – multi-lane road|272|2
-Rule 146 (2)|Not drive within single line of traffic (no lines marked)|272|2
-Rule 147|Move from marked lane to another across continuous line|272|2
-Rule 148 (1)|Not give way (move from marked lane to another)|349|3
-Rule 148A|Not give way (diverges left or right within marked lane)|349|3
-Rule 149|Not give way to vehicle ahead when merging|349|3
-Rule 150 (1)|Drive on/over continuous white edge line|272|2
-Rule 159 (1)|Not drive in lane marked for particular vehicle|349|3
-#Bus, Bike, Tram & Transit Lanes
-Rule 153 (1)|Drive in bicycle lane|194|0
-Rule 154 (1)|Drive in bus lane|349|1
-Rule 155 (1)|Drive in tram lane|272|1
-Rule 156 (1)|Drive in transit lane|272|0
-Rule 157 (1)|Drive in truck lane|349|0
-Rule 157-1 (1)|Drive in a T-Way lane|349|1
+Rule 129 (1)|Not drive on far left side of road|330|2|82693
+Rule 130 (1)(a)&(2)|Drive in right lane on road with speed limit over 80 km/h|423|2|83245
+Rule 130 (1)(b)&(2)|Disobey keep left unless overtaking sign|423|2|83247
+Rule 131|Not keep left of oncoming vehicle|423|2|83717
+Rule 132 (1)|Not keep left of centre on two-way road|423|2|83279
+Rule 132 (2)|Not keep left of dividing line|423|3|82822
+Rule 132 (2A)|Drive across dividing lines to perform U-turn|423|3s|83372
+Rule 135 (1)|Not keep left of median strip|423|3|83566
+Rule 136|Drive wrong way on one-way service road|423|3|83733
+Rule 137 (1)|Drive on dividing strip|330|2|83655
+Rule 138 (1)|Drive on/over continuous line near painted island|330|2|83343
+Rule 146 (1)|Not drive within marked lane multi-lane road|330|2|82716
+Rule 146 (2)|Not drive within single line of traffic (no lines marked)|330|2|83381
+Rule 147|Move from marked lane to another across continuous line|330|2|82688
+Rule 148 (1)|Not give way (move from marked lane to another)|423|3|83597
+Rule 148 (2)|Not give way (move from one line of traffic to another)|423|3|83640
+Rule 148A|Not give way (diverges left or right within marked lane)|423|3|83358
+Rule 149|Not give way to vehicle ahead when merging|423|3|83265
+Rule 150 (1)|Drive on/over continuous white edge line|330|2|83727
 #Overtaking & Following
-Rule 125 (1)|Unreasonably obstruct driver/pedestrian|272|0
-Rule 126|Drive behind other vehicle too closely to stop safely (tailgating)|464|3
-Rule 140|Overtake vehicle when unsafe|349|2
-Rule 141 (1)|Overtake to left of vehicle|194|2
-Rule 142 (1)|Overtake to right of vehicle turning right/making U-turn|349|2
-Rule 144 (a)|Overtake vehicle too closely|349|2
-Rule 144 (b)|Cut in front of vehicle after overtaking|349|2
-Rule 144-1 (1)|Fail to keep safe distance when passing bicycle|349|2
-Rule 145|Increase speed while being overtaken|349|3
-#Seatbelts & Restraints
-Rule 264|Driver not wearing seatbelt|349|3d
-Rule 265 (1)|Passenger (16+) seatbelt not adjusted/fastened|349|0
-Rule 265 (3)|Drive with passenger 16 years or older unrestrained|349|3d
-Rule 265 (3)|Drive with 2 unrestrained passengers|697|6d
-Rule 265 (3)|Drive with 3 unrestrained passengers|1123|6d
-Rule 265 (3)|Drive with 4 or more unrestrained passengers|1472|6d
-Rule 266 (1)|Drive with passenger under 6 months not in approved restraint|349|3d
-Rule 266 (1)|Drive with passenger 6 months to under 4 years not restrained|349|3d
-Rule 266 (1)|Drive with passenger 4 to under 7 years not restrained|349|3d
-Rule 266 (1)|Drive with passenger 7 to under 16 years not restrained|349|3d
-Rule 267-1 (2)(b)|Learner/P1/P2 driver with passenger under 16 not restrained|349|3d
-Rule 268-2 (2)|Driver drive motor vehicle with person/s in/on boot|349|3d
-#Motorcycles
-Rule 151A (2)|Motor bike rider unlawfully lane filter|697|3
-Rule 270 (1)(a)|Ride motorcycle with no helmet (rider alone)|349|3d
-Rule 270 (1)(b)|Ride motorcycle with one unhelmeted passenger|349|3d
-Rule 270 (2)|Motorcycle passenger not wearing helmet|349|0
-Rule 271 (1)(a)|Not sit astride on motorcycle rider’s seat|349|3
-Rule 271 (4)|Ride motorcycle with more than 1 passenger|349|3
-Rule 271-1 (1)|Carry passenger on motor bike (licensed less than 12 months)|349|3
-#Mobile Phones & Distraction
-Rule 297 (1)|Drive without proper control of vehicle|464|3
-Rule 297 (2)|Drive vehicle without clear view|349|3
-Rule 297 (1A)|Drive motor vehicle with person or animal in lap|464|3
-Rule 299 (1)(a)|Drive vehicle with TV/VDU image visible to driver|349|3
-Rule 300|Drive using mobile phone when not permitted (not L, P1 or P2)|349|5d
-Rule 300-1|Learner or Provisional driver use mobile phone while driving|349|5d
-Rule 272 (a)|Passenger interfere with driver’s control of vehicle|116|0
-#General Driving & Crashes
-Rule 224|Use/allow use of horn/warning device unnecessarily|349|0
-Rule 268 (3)|Part of body outside vehicle window/door (driver)|349|3
-Rule 287 (1)&(3)|Not give particulars to police after crash|349|3
-Rule 288 (1)|Drive on path|349|3
-Rule 289 (1)|Drive on nature strip|349|3
-Rule 290|Drive on traffic island|349|3
-Rule 291|Start/drive vehicle causing unnecessary noise/smoke|349|3
-Rule 292 (a)|Drive/tow vehicle with unsecured load|464|3
-Rule 293 (2)|Not remove anything fallen/put on road|464|3
-Rule 294 (2)(b)|Tow trailer when unsafe|464|3
-Rule 296 (1)|Not reverse vehicle safely|194|2
-Rule 298-1|Driver consume alcohol while driving|349|3
-Rule 300-5|Drive motor vehicle not carry licence|116|0
-Rule 304 (1)|Not obey direction of police/authorised person|349|3
-Sec 116 (1)|Burnout|697|3
-Sec 117 (1)(c)|Negligent driving|464|3
+Rule 125 (1)|Unreasonably obstruct driver/pedestrian|330|0|83400
+Rule 126|Drive behind other vehicle too closely to stop safely|562|3|82709
+Rule 127 (1)|Long vehicle not required distance from other long vehicle|562|3|
+Rule 128|Enter intersection when intersection/road beyond blocked|330|0|82605
+Rule 128A|Enter blocked children's/pedestrian/marked foot crossing|330|2s|82757
+Rule 140|Overtake vehicle when unsafe|423|2|82736
+Rule 141 (1)|Overtake to left of vehicle|235|2|83524
+Rule 142 (1)|Overtake to right of vehicle turning right/making U-turn|423|2|83459
+Rule 143 (1)|Disobey do not overtake turning vehicle sign (left turn)|330|2|82565
+Rule 143 (1A)|Overtake/pass vehicle contrary to sign|330|2|82613
+Rule 143 (2)|Disobey do not overtake turning vehicle sign (right/U-turn)|330|2|82793
+Rule 144 (a)|Overtake vehicle too closely|423|2|83368
+Rule 144 (b)|Cut in front of vehicle after overtaking|423|2|83288
+Rule 144-1 (1)|Fail to keep safe distance when passing bicycle|423|2|87144
+Rule 145|Increase speed while being overtaken|423|3|83649
+#Bus, Bike, Tram & Transit Lanes
+Rule 152 (1)&(2)|Drive in lane (red cross on overhead device)|562|3|83419
+Rule 152 (1)&(3)|Drive in lane (flashing red cross on overhead device)|562|3|83418
+Rule 153 (1)|Drive in bicycle lane|235|0|83633
+Rule 154 (1)|Drive in bus lane|423|1|82791
+Rule 154A (1)|Drive in bus only lane|423|1|100910
+Rule 154A (3)|Drive across bus only lane|423|1|100912
+Rule 154A (5)|Turning driver not approach from nearest lane/​give way|423|1|100914
+Rule 155 (1)|Drive in tram lane|330|1|83485
+Rule 155A|Drive in a tramway|330|1|
+Rule 156 (1)|Drive in transit lane|330|0|83537
+Rule 157 (1)|Drive in truck lane|423|0|83302
+Rule 157-1 (1)|Drive in a T-Way lane|423|1|83465
+Rule 159 (1)|Not drive in lane marked for particular vehicle|423|3|82885
+#Parking & Vehicle Security
+Rule 212 (1)|Enter/leave median strip parking area contrary to sign|140|0|82884
+Rule 212 (2)|Not enter/leave median strip parking area forwards|140|0|83627
+Rule 213 (2)|Not restrain vehicle properly|140|0|82696
+Rule 213 (3)|Leave engine on|140|0|82694
+Rule 213 (4)|Not remove ignition key (vehicle unattended)|140|0|82697
+Rule 213 (5)|Not secure windows/lock doors (vehicle unattended)|140|0|82695
 #Lights
-Rule 215-1 (1)|Drive during darkness without prescribed lights|116|1
-Rule 218 (1)(a)|Use high-beam on vehicle in front|116|1
-Rule 218 (1)(b)|Use high-beam on oncoming vehicle|116|1
-Rule 219|Use light on vehicle likely to dazzle|116|1
-Rule 218-1 (f)|Use hazard warning lights when not permitted|116|0
+Rule 215-1 (1)|Drive during period of darkness without prescribed lights|140|1|83533
+Rule 216 (1)(a)|Tail/rear lights no on/visible (towing from front)|140|0|83634
+Rule 216 (1)(b)|Rear lights not/visible (towing from rear)|140|0|83329
+Rule 218 (1)(a)|Use/allow use of high-beam on vehicle in front|140|1|83498
+Rule 218 (1)(b)|Use/allow use of high-beam on oncoming vehicle|140|1|83608
+Rule 218-1 (a)|Use fog light when not permitted|140|0|82650
+Rule 218-1 (b)|Unlawful use of spot/search lamp|140|0|82648
+Rule 218-1 (c)|Unlawful use of additional headlamps|140|0|
+Rule 218-1 (e)|Use other lights not as prescribed|140|0|83432
+Rule 218-1 (f)|Use/allow use of hazard warning lights when not permitted|140|0|82652
+Rule 219|Use/allow use of light on/in vehicle likely/to dazzle|140|1|83637
+Rule 220-1 (1)|Stand vehicle/trailer not have rear light etc lighted|140|0|83462
+Rule 221-1 (1)|Improperly use crimson warning light on vehicle|140|0|82734
+Rule 221-2 (1)|Flashing warning light not on - street vending vehicle parked|140|0|83704
+Rule 221-2 (2)|Flashing warning light on - street vending vehicle on road|140|0|83657
+Rule 222-1 (1)|Not use bus four-way flasher when children getting on/off|423|0|83593
+Rule 222-2 (1)|Drive school bus without warning system attached|235|0|82654
+Rule 222-2 (2)|Not activate flashing lights at children drop off/pick up|235|0|83236
+Rule 222-2 (3)|Activate flashing lights of school bus when not permitted|140|0|83254
+Rule 223 (a)|Animal-drawn vehicle-white light not fitted/visible|94|0|82897
+Rule 223 (b)|Animal-drawn vehicle-red light not fitted/visible|94|0|83312
+Rule 223 (c)(i)|Animal-drawn vehicle-reflector not fitted/over 1.5m|94|0|82742
+Rule 223 (c)(ii)|Animal-drawn vehicle-reflector not fitted/visible|94|0|83333
+#Seatbelts & Restraints
+Rule 264 (1)(a)|Drive not occupy drivers seating position/​seatbelt fitted|423|3d|100925
+Rule 264 (1)(b)|Driver occupy same seating position as another passenger|423|3d|100926
+Rule 264 (1)(c)|Driver not wear seatbelt properly adjusted and fastened|423|3d|100927
+Rule 264-1 (1)|Drive with passenger 16 years or older unrestrained|423|3d|102356
+Rule 264-1 (1)|Drive with 2 unrestrained passengers|844|6d|102357
+Rule 264-1 (1)|Drive with 3 unrestrained passengers|1361|6d|102358
+Rule 264-1 (1)|Drive with 4 or more unrestrained passengers|1784|6d|102359
+Rule 265 (1)|Passenger occupy same seat as another (16 yrs or older)|423|0|83361
+Rule 265 (1)|Passenger seatbelt not adjusted/fastened (16 yrs or older)|423|0|83359
+Rule 265 (1)|Passenger not occupy seat with seatbelt (16 years or older)|423|0|83360
+Rule 266 (1)|Drive with passenger under 6 mths not in fastened/adjusted/approved restraint|423|3d|83326r
+Rule 266 (1)|Drive with passenger older than 6 mths but less than 4 yrs not restrained|423|3d|
+Rule 266 (1)|Drive with passenger older than 4 yrs but less than 7 yrs not restrained|423|3d|
+Rule 266 (1)|Drive with passenger less than 4 yrs in front row of vehicle (two or more rows)|423|3d|
+Rule 266 (1)|Drive with passenger 4 yrs or older but less than 7 yrs in front row of vehicle|423|3d|
+Rule 266 (1)|Drive with passenger 7 yrs or older but less than 16 yrs not restrained|423|3d|
+Rule 267-1 (2)(a)|Learner/P1/P2 driver passengers (16 years or older) not wear seatbelts|423|3d|82852
+Rule 267-1 (2)(a)|Learner/P1/P2 driver passengers (16 years or older) seatbelts not fitted|423|3d|82851
+Rule 267-1 (2)(b)|Learner/P1/P2 driver with passenger under 16 not restrained as age appropriate|423|3d|82617
+Rule 267-1 (3)|Passenger (16 or older) in seat restraint not fitted|423|0|
+Rule 267-1 (4)|Passenger (16 or older) not wear seat belt properly|423|0|83659
+Rule 268 (1)|Travel in/on vehicle in part not for passengers/goods|423|0|83244
+Rule 268 (2)|Travel in/on part of vehicle designed for carrying goods|423|0|
+Rule 268 (2)(b)|Ride in/on part of vehicle for goods wrong size no seatbelt|423|0|82915
+Rule 268 (3)|Part of body outside vehicle window/door (driver)|423|3|83648
+Rule 268 (3)|Part of body outside vehicle window/door (passenger)|423|0|
+Rule 268 (4)|Drive with part of passengers body outside window/door|423|3|83656
+Rule 268 (4A)|Drive with passenger in/on part of vehicle not permitted|423|3|83307
+Rule 268 (4B)(a)|Drive with passenger in/on part of vehicle not enclosed|423|3|83334
+Rule 268 (4B)(b)|Drive with passenger in/on part of vehicle no seatbelt etc|423|3|82681
+Rule 268-2 (1)|Travel in/on boot of motor vehicle|423|0|82876
+Rule 268-2 (2)|Driver drive motor vehicle with person/s in/on boot|423|3d|83240
+Rule 268-3 (1)|Travel in unenclosed part of trailer|423|0|82651
+Rule 269 (1)|Alight from moving vehicle|423|0|83598
+Rule 269 (3)|Cause hazard to person/vehicle (door open/alighting)|423|0|83711
+Rule 269 (4)|Drive moving bus with doors opened|423|0|82618
+Rule 298|Tow trailer with person in/on trailer|423|3|
+#Motorcycles
+Rule 151 (1)|Ride motorcycle more than 2 abreast on road|94|0|
+Rule 151 (2)|Ride motorcycle more than 2 abreast in marked lane|94|0|
+Rule 151 (4)|Ride motorcycle more than 1.5m from another|94|0|
+Rule 151A|Motor Bike Rider Unlawfully Lane Filter|844|3|95673
+Rule 270 (1)(a)|Ride motorcycle with no helmet (rider alone)|423|3d|83390
+Rule 270 (1)(b)|Ride motorcycle with one unhelmeted passenger|423|3d|
+Rule 270 (1)(b)|Ride motorcycle with 2 unhelmeted passengers|844|6d|82670
+Rule 270 (1)(b)|Ride motorcycle with 3 unhelmeted passengers|1361|6d|
+Rule 270 (1)(b)|Ride motorcycle with 4 or more unhelmeted passengers|1784|6d|
+Rule 270 (1)|Ride motorcycle with one unhelmeted passenger (rider not helmeted)|844|6d|
+Rule 270 (1)|Ride motorcycle with 2 unhelmeted passengers (rider not helmeted)|1361|9d|
+Rule 270 (1)|Ride motorcycle with 3 unhelmeted passengers (rider not helmeted)|1784|9d|
+Rule 270 (1)|Ride motorcycle with 4 or more unhelmeted passengers (rider not helmeted)|2204|9d|
+Rule 270 (2)|Motorcycle passenger not wearing helmet|423|0|83658
+Rule 271 (1)(a)|Not sit astride motor bike rider's seat facing forward|423|3|100928
+Rule 271 (1)(b)(i)|Not ride motor bike with at least one hand on handlebars|140|0|100929
+Rule 271 (1)(b)(ii)|Ride motor bike not keep both feet on footrests etc|140|0|100930
+Rule 271 (2)(a)|Not sit astride pillion seat|423|0|82722
+Rule 271 (2)(b)|Feet not on pillion footrests|140|0|83351
+Rule 271 (2)(a)&(3)|Passenger not sit astride pillion seat (rider)|423|0|82722
+Rule 271 (2)(b)&(3)|Passenger’s feet not on pillion footrests (rider)|140|0|83555
+Rule 271 (4)|Ride motorcycle with more than 1 passenger|423|3|83402
+Rule 271 (5)|Exceed number of passengers in motorcycle sidecar|423|3|
+Rule 271 (5A)|Ride motor bike with passenger under 8 years not in sidecar|423|3|82919
+Rule 271 (5B)|Motor bike passenger in sidecar not safely seated|423|0|83652
+Rule 271 (5C)|Rider carry passenger not safely seated in sidecar|423|3|
+Rule 271-1 (1)|Carry passenger on motor bike (licensed for less than 12 months)|423|3|82867
+Rule 271-2 (1)|Drive car-based motor tricycle with under 16 year passenger|423|3|83332
+#Mobile Phones & Distraction
+Rule 299 (1)(a)|Drive vehicle with TV/VDU image visible to driver|423|3s|83604
+Rule 299 (1)(b)|Drive vehicle with TV/VDU image likely to distract another driver|423|0|82906
+Rule 300|Drive using mobile phone when not permitted (not L, P1 or P2)|423|5ds|83379
+Rule 300-1|Learner or Provisional driver use mobile phone while driving|423|5ds|88366
+#General Driving & Crashes
+Rule 224|Use/allow use of horn/warning device unnecessarily|423|0|82810
+Rule 224-1|Driver/rider/passenger use device to make sound like a siren|423|0|
+Rule 226 (1)|Drive heavy vehicle without portable warning triangles|140|0|83331
+Rule 226 (2)|Not produce portable warning triangles for inspection|140|0|83488
+Rule 227 (2)|Triangle not behind vehicle/fallen load - speed equal to/exceeds 80 km/h|140|0|83260
+Rule 227 (2)|Triangle not beside vehicle/fallen load - speed equal to/exceeds 80 km/h|140|0|83261
+Rule 227 (2)|Triangle not between two places on divided road - speed equal to/exceeds 80 km/h|140|0|83262
+Rule 227 (2)|Triangle not in front of vehicle/fallen load - speed equal to/exceeds 80 km/h|140|0|83259
+Rule 227 (3)|Triangle not behind vehicle/fallen load - speed limit less than 80 km/h|140|0|82765
+Rule 227 (3)|Triangle not beside vehicle/fallen load - speed limit less than 80 km/h|140|0|82763
+Rule 227 (3)|Triangle not between two places on divided road - speed limit less than 80 km/h|140|0|82762
+Rule 227 (3)|Triangle not in front of vehicle/fallen load - speed limit less than 80 km/h|140|0|82764
+Rule 272 (a)|Passenger interfere with driver's control of vehicle|140|0|83504
+Rule 272 (b)|Passenger obstruct driver's view|140|0|83592
+Rule 287 (1)&(2)(a)|Not give particulars to other driver|423|3|83251
+Rule 287 (1)&(2)(b)|Not give particulars to injured person|423|3|83253
+Rule 287 (1)&(2)(c)|Not give particulars to owner of damaged property|423|3|83250
+Rule 287 (1)&(3)|Not give particulars to police|423|3|83252
+Rule 288 (1)|Drive on path|423|3s|82594
+Rule 288 (4)|Driver not give way to user/animal on path|423|3s|82724
+Rule 289 (1)|Drive on nature strip|423|3s|82581
+Rule 289 (2)|Driver not give way to user/animal on nature strip|423|3s|83310
+Rule 290|Drive on traffic island|423|3s|83304
+Rule 296 (1)|Not reverse vehicle safely|235|2s|83452
+Rule 296 (2)|Reverse vehicle further than necessary|140|0|83424
+Rule 297 (1)|Drive without proper control of vehicle|562|3s|83355
+Rule 297 (2)|Drive vehicle without clear view|423|3s|82601
+Rule 297 (3)|Ride with animal between rider and handle bars|562|3s|83409
+Rule 297 (1A)|Drive motor vehicle with person or animal in lap|562|3s|83585
+Rule 298-1|Driver consume alcohol while driving|423|3|82557
+Rule 300-2 (1)|Drive dangerous goods transporter in prohibited area|562|0|82874
+Rule 300-4 (1)|Drive school bus without displaying signs|423|0|
+Rule 300-5|Drive motor vehicle not carry licence|140|0|83509
+Rule 316-2 (1)|Unlawfully display turning vehicle sign|235|0|
+Rule 304 (1)|Not obey direction of police/authorised person|423|3|82843
+Rule 316-2 (1)|Display do not overtake turning vehicle sign when less than 7 1/2 metres|235|0|82665
+Sec 116 (1)|Burnout|844|3|
+Sec 117 (1)(c)|Negligent driving|562|3|
+#Towing, Loads & Noise
+Rule 291|Start/drive vehicle causing unnecessary noise/smoke|423|3|83520
+Rule 291-1 (1)|Not stop engine of stationary vehicle|235|0|82756
+Rule 291-2|Driver not prevent waste oil/grease dropping on roadway|235|0|83398
+Rule 292 (a)|Drive/tow vehicle with unsecured load|562|3|83267
+Rule 292 (b)|Drive/tow vehicle with load causing instability|562|3|83619
+Rule 292 (c)|Drive/tow vehicle with overhanging load|562|3|82786
+Rule 293 (2)|Not remove/have removed any thing fallen/put on road|562|3|83367
+Rule 294 (1)(a)(i)|Tow without control of towed vehicle|562|3|83426
+Rule 294 (1)(a)(ii)|Towed vehicle not in order/with licensed person/in control|562|3|83356
+Rule 294 (1)(b)|Tow vehicle when unsafe|562|3|82612
+Rule 294 (2)(a)|Tow without control of trailer|562|3|83651
+Rule 294 (2)(b)|Tow trailer when unsafe|562|3|82619
+Rule 294-1 (1)(a)|Articulated vehicle tow other vehicle|562|3|83581
+Rule 294-1 (1)(b)|Motor vehicle tow more than one vehicle|562|3|83321
+Rule 294-1 (1)(b)|Use/cause towed vehicle/trailer exceed maximum laden weight (non-driver)|562|0|
+Rule 294-2 (1)(a)|Towed vehicle/trailer exceed towing capacity|562|3|83443
+Rule 294-2 (1)(b)|Towed vehicle/trailer exceed maximum laden weight|562|3|83563
+Rule 294-3 (1)(a)|Not keep required distance (towing with towline)|140|0|83587
+Rule 294-3 (1)(b)(i)|Not have licensed driver in control of towed vehicle|140|0|83500
+Rule 294-3 (1)(b)(ii)|Tow vehicle without authorisation/not comply with authorisation|140|0|82877
+Rule 294-3 (1)(c)|Not display hoisting capacity|140|0|
+Rule 294-3 (1)(c)|Not have lift equipment approved by Authority|140|0|
+Rule 294-3 (1)(c)|Not interconnect brakes with braking system of tow truck|140|0|82858
+Rule 294-3 (1)(c)|Not release weight of towed vehicle from lifting device|140|0|82859
+Rule 294-3 (1)(d)|Drive vehicle tow motor bike not as prescribed|140|0|83241
+Rule 294-3 (1)(e)|Not display warning flag as required|140|0|83388
+Rule 294-3 (1)(f)|Not have proper lighting on towed vehicle|140|0|83528
+Rule 294-3 (1)(g)|Tow non-mechanical vehicle not fastened as prescribed|140|0|82666
+#Bicycles & E-Scooters
+Rule 119|Bicycle rider on left of roundabout not give way to vehicle|140|0|87162
+Rule 141 (2)|Cyclist pass/overtake left of left turning vehicle|140|0|82779
+Rule 151 (1)|Ride bicycle more than 2 abreast on road|140|0|82623
+Rule 151 (2)|Ride bicycle more than 2 abreast in marked lane|140|0|82755
+Rule 151 (4)|Ride bicycle more than 1.5m from another|140|0|82599
+Rule 245 (a)|Not sit astride bicycle rider's seat|140|0|87679
+Rule 245 (b)|Not ride bicycle with hand on bars|140|0|83643
+Rule 245 (c)|Ride bicycle in incorrect position|140|0|
+Rule 245-1 (1)(a)|Ride bicycle negligently|562|0|83416
+Rule 245-1 (1)(b)|Ride bicycle furiously|562|0|83300
+Rule 245-1 (1)(c)|Ride bicycle recklessly|562|0|83271
+Rule 246 (1)|Carry more persons on bicycle than permitted|140|0|82573
+Rule 246 (2)|Passenger on bicycle not sit on passenger seat|140|0|83270
+Rule 246 (3)|Ride bicycle with passenger not seated on passenger seat|140|0|83613
+Rule 247 (1)|Not ride in bicycle lane|140|0|82578
+Rule 247A|Rider not enter bicycle storage area correctly|140|0|
+Rule 247B (1)(a)|Enter bicycle storage area not give way to vehicle|140|0|83576
+Rule 247B (1)(b)|Enter bicycle storage area not give way to vehicle (lights)|140|0|82766
+Rule 247B (1)(c)|Enter bicycle storage area not give way to vehicle (arrows)|140|0|83645
+Rule 247B (2)|In bicycle storage area not give way to vehicle (multi-lane)|140|0|82691
+Rule 248 (1)|Bicycle rider cross road on children's/pedestrian crossing|140|0|83447
+Rule 248 (2)|Bicycle rider cross road on marked foot crossing|140|0|83428
+Rule 249|Ride bicycle on pedestrian part of separated footpath|140|0|83371
+Rule 250 (1)|Ride bicycle on footpath (16 yrs or older)|140|0|92732
+Rule 250 (2)|Bicycle not keep left (shared/foot path)|140|0|
+Rule 250 (2)(b)|Bicycle not give way (shared/foot path)|140|0|82566
+Rule 251|Bicycle not ride to left of oncoming bicycle on path|140|0|83391
+Rule 252 (1)|Disobey no bicycles sign/road marking|140|0|83286
+Rule 253|Bicycle rider moving into path of driver/pedestrian|140|0|82850
+Rule 254 (1)|Ride on bicycle that is being towed|423|0|82622
+Rule 254 (2)|Hold onto moving vehicle while riding bicycle|423|0|83451
+Rule 255|Ride bicycle too close to rear of motor vehicle|140|0|83644
+Rule 256 (1)|Rider not wear bicycle helmet/fitted/fastened|423|0|82631
+Rule 256 (2)|Passenger not wear bicycle helmet/fitted/fastened|423|0|83281
+Rule 257 (1)|Tow bicycle trailer with person in/on trailer|140|0|82795
+Rule 258 (a)|Ride bicycle without working brake|140|0|83501
+Rule 258 (b)|Ride bicycle without working warning device|140|0|83510
+Rule 259 (a)|Ride bicycle without visible front white light|140|0|83454
+Rule 259 (b)|Ride bicycle without visible rear red light|140|0|82728
+Rule 259 (c)|Ride bicycle without visible red reflector|140|0|83493
+Rule 260 (1)|Proceed before allowed (red bicycle crossing light showing)|140|0|83616
+Rule 261 (1)|Proceed before allowed (yellow bicycle crossing light showing)|140|0|84474
+Rule 262 (1)|Not cross intersection safely (bicycle crossing lights)|140|0|82577
+Rule 262 (2)|Not finish crossing road safely (bicycle crossing lights)|140|0|83238
+Rule 262-1|Ride electric scooter on road not in specified area|140|0|99636
+Rule 262-4|Ride electric scooter on footpath|140|0|99637
+Rule 262-5|Ride electric scooter on road speed limit greater 50km/hr|140|0|99638
+Rule 262-6|Ride electric scooter on road not in single file|140|0|99639
+Rule 262-7(1)|Ride electric scooter not keep to left of oncoming riders|140|0|99640
+Rule 262-7(2)|Ride electric scooter on shared path not keep left of path|140|0|99641
+Rule 262-7(3)(a)|Ride electric scooter shared path not give way to pedestrian|140|0|99642
+Rule 262-7(3)(b)|Ride electric scooter on shared path too close to pedestrian|140|0|99643
+Rule 262-8(a)(i)|Ride electric scooter greater than 20 km/hr on road|140|0|99644
+Rule 262-8(a)(ii)|Ride electric scooter at speed greater than speed limit sign|140|0|99645
+Rule 262-8(b)|Ride electric scooter on shared path greater than 10 km/hr|140|0|99646
+Rule 262-9|Not wear approved bicycle helmet securely fitted/fastened|140|0|99647
+Rule 262-10|Rider of electric scooter not at least 16 years of age|140|0|99648
+Rule 262-11|Ride electric scooter carry another person/animal|140|0|99649
+Rule 262-12|Ride electric scooter not have working bell/horn etc|140|0|99650
+Rule 262-13|Electric scooter fitted with object likely risk harm/injury|140|0|99651
+Rule 27 (1)|Bicycle: Not turn left from far left side of road|140|0|82812
+Rule 28 (1)|Bicycle: Not turn left from multi-lane road from within left lane|140|0|82628
+Rule 28 (1A)|Bicycle: Not turn left from slip lane from multi-lane road|140|0|83568
+Rule 28 (2A)|Bike rider not enter from left marked lane-bike storage area|140|0|82570
+Rule 29|Bicycle: Turn left contrary to road marking|140|0|
+Rule 31 (4A)|Bike rider not enter intersection from left of/parallel to/as near to dividing line/strip|140|0|
+Rule 31 (4A)|Bike rider not enter one-way road from far right|140|0|83255
+Rule 31 (4A)|Bike rider not turn right from left of/parallel to/as near to dividing line/strip|140|0|83257
+Rule 31|Bicycle: Not turn right from left of line/strip correctly|140|0|87184
+Rule 31|Bicycle: Not turn right from left of centre of road correctly|140|0|87183
+Rule 31|Bicycle: Not turn right from far right side of one-way road|140|0|87182
+Rule 32 (1)|Bicycle: Not turn right from multi-lane road from within right lane|140|0|82719
+Rule 32 (2A)|Not enter intersection from bike storage area - turning right|140|0|83536
+Rule 33 (1)&(2)|Bicycle: Turn right contrary to road marking|140|0|82607
+Rule 33 (1)&(3)|Bicycle: Not turn right near to right of centre of intersection|140|0|82608
+Rule 35 (2)|Bicycle rider not make hook turn as prescribed|140|0|83422
+Rule 56 (1)(a)|Bicycle: Not stop at stop line at red light|562|0|87146
+Rule 56 (1)|Bicycle: Not stop at red light - toll booth|235|0|
+Rule 56 (1)(b)|Bicycle: Not stop before stop sign at red light|562|0|87147
+Rule 56 (1)(c)|Bicycle: Not stop before lights at red light|562|0|87148
+Rule 56 (2)(a)|Bicycle: Not stop at stop line at red arrow|562|0|83553
+Rule 56 (2)(b)|Bicycle: Not stop before stop sign at red arrow|562|0|87150
+Rule 56 (2)(c)|Bicycle: Not stop before lights at red arrow|562|0|87151
+Rule 59 (1)|Bicycle: Proceed through red traffic light - toll booth|235|0|83404
+Rule 59 (1)|Bicycle: Proceed through red traffic light|562|0|83403
+Rule 80 (1)|Bicycle: Approach children’s crossing too quickly to stop safely|562|0|82840
+Rule 80 (2)(a)|Bicycle: Disobey hand-held stop sign at children’s crossing|562|0|87154
+Rule 80 (2)(b)|Bicycle: Not stop at children’s crossing-pedestrian on crossing|562|0|83364
+Rule 80 (3)(a)|Bicycle: Proceed at children’s crossing while sign shown|562|0|87156
+Rule 80 (3)(b)|Bicycle: Proceed at children’s crossing contrary to directions|562|0|83620
+Rule 80 (4)|Bicycle: Proceed at children’s crossing-pedestrian at crossing|562|0|82568
+Rule 81 (1)|Bicycle: Approach pedestrian crossing too quickly to stop safely|562|0|82896
+Rule 81 (2)|Bicycle: Not give way to pedestrian on pedestrian crossing|562|0|83626
+Rule 82|Bicycle: Pass/overtake vehicle at pedestrian/children’s crossing|562|0|82862
+Rule 83|Bicycle: Not give way to pedestrian in shared zone|140|0|83571
+Rule 88 (1)|Bicycle: Disobey left turn only sign|140|0|82636
+Rule 88 (2)|Bicycle: Disobey left lane must turn left sign|140|0|87189
+Rule 89 (1)|Bicycle: Disobey right turn only sign|140|0|82848
+Rule 89 (2)|Bicycle: Disobey right lane must turn right sign|140|0|87191
+Rule 90|Bicycle: Disobey no turns sign|140|0|83283
+Rule 91 (1)|Bicycle: Disobey no left turn sign|140|0|83456
+Rule 91 (2)|Bicycle: Disobey not right turn sign|140|0|83514
+Rule 92 (1)|Bicycle: Drive contrary to direction of traffic lane arrow|140|0|82871
+Rule 98 (1)|Bicycle: Disobey one-way sign|140|0|83709
+Rule 99 (1)|Bicycle: Disobey keep left sign|140|0|83515
+Rule 99 (2)|Bicycle: Disobey keep right sign|140|0|87164
+Rule 100|Bicycle: Disobey no entry sign|140|0|82700
+Rule 129 (1)|Bicycle: Not drive on far left side of road|140|0|82693
+Rule 130 (1)(a)&(2)|Bicycle: Drive in right lane on road with speed-limit over 80 km/h|140|0|83245
+Rule 130 (1)(b)&(2)|Bicycle: Disobey keep left unless overtaking sign|140|0|83247
+Rule 131|Bicycle: Not keep left of oncoming vehicle|140|0|83717
+Rule 132 (1)|Bicycle: Not keep left of centre on two-way road|140|0|83279
+Rule 132 (2)|Bicycle: Not keep left of dividing line|140|0|82822
+Rule 135 (1)|Bicycle: Not keep left of median strip|140|0|83566
+Rule 137 (1)|Bicycle: Drive on dividing strip|140|0|83655
+Rule 138 (1)|Bicycle: Drive on/over continuous line near painted island|140|0|83343
+#Pedestrians, Wheeled Devices & Animals
+Rule 228|Travel past no pedestrians sign|94|0|83642
+Rule 229|Disobey road access sign|94|0|83635
+Rule 230 (1)(a)|Not cross road by shortest safe route|94|0|83266
+Rule 230 (1)(b)|Stay on road longer than necessary to cross|94|0|83653
+Rule 231 (1)&(2)(a)|Cross when pedestrian lights not green|94|0|83395
+Rule 231 (1)&(3)(a)|Not cross quickly to safety area (pedestrian lights)|94|0|83394
+Rule 231 (1)&(3)(b)|Not cross quickly to nearest side (pedestrian lights)|94|0|83393
+Rule 231 (1)&(4)|Not stay in safety area at pedestrian lights|94|0|83396
+Rule 232 (1)|Cross against traffic light (no pedestrian lights)|94|0|83365
+Rule 233 (1)|Cross road before tram stops|94|0|82802
+Rule 233 (2)(a)|Not cross by shortest safest route after getting off tram|94|0|82630
+Rule 233 (2)(b)|Stay on road after getting off tram|94|0|82842
+Rule 234 (1)|Pedestrian not cross part/road at crossing|94|0|83499
+Rule 234 (2)|Stay on crossing longer than necessary|94|0|82837
+Rule 235 (1)(a)|Not use pedestrian facility at level crossing|94|0|82869
+Rule 235 (1)(b)|Not cross within 20m of level crossing|94|0|83572
+Rule 235 (2)(a)|Cross level crossing contrary to warning lights/bells|94|0|82893
+Rule 235 (2)(b)|Cross level crossing with gate/boom/barrier operating|94|0|82744
+Rule 235 (2)(c)|Cross level crossing when tram/train on/entering crossing|94|0|82820
+Rule 235 (2)(d)|Cross level crossing when approaching tram/train seen/heard|94|0|82873
+Rule 235 (2)(e)|Cross level crossing when crossing/road beyond blocked|94|0|82753
+Rule 235 (2A)(a)|Not finish crossing without delay if warning lights/bells start|94|0|82576
+Rule 235 (2A)(b)|Not finish crossing without delay if gate/boom starts to close|94|0|83444
+Rule 235 (2A)(c)|Not finish crossing without delay if train or tram approaches|94|0|83335
+Rule 235A (2)|Cross if a pedestrian level crossing has red pedestrian light|94|0|82611
+Rule 235A (3)|Not finish crossing without delay if red pedestrian light appears|94|0|82780
+Rule 236 (1)|Pedestrian move into driver's path|94|0|82849
+Rule 236 (2)|Pedestrian obstruct driver's/other pedestrian's path|94|0|83506
+Rule 236 (4)(a)|Stand on/move onto road to solicit contributions etc from occupant of vehicle|94|0|83306
+Rule 236 (4)(b)|Stand on/move onto road to hitchhike|94|0|83386
+Rule 236 (4)(c)|Stand on/move onto road to display an advertisement|94|0|83565
+Rule 236 (4)(d)|Stand on/move onto road to sell or offer articles for sale|94|0|82775
+Rule 236 (4)(e)|Stand on/move onto road to wash/clean/offer to wash/clean windscreen of vehicle|94|0|82706
+Rule 236 (5)|Driver/passenger in/on vehicle buy/offer to buy article/service from person on road|94|0|
+Rule 237 (1)|Get on/into moving vehicle|94|0|83374
+Rule 238 (1)|Pedestrian not travel on footpath/nature strip|94|0|82855
+Rule 238 (2)(a)|Pedestrian not keep to side of road|94|0|82733
+Rule 238 (2)(ab)|Pedestrian travel on road not face approaching traffic|94|0|82702
+Rule 238 (2)(b)|Travel on road beside more than 1 other pedestrian/vehicle|94|0|83445
+Rule 239 (1)|Pedestrian on bicycle path/separated footpath|94|0|82781
+Rule 239 (3)|Not keep out of path of bicycle/pedestrian|94|0|82836
+Rule 240 (1)|Use wheeled device (dividing line/median strip)|94|0|82586
+Rule 240 (1)|Use wheeled device (multi-lane one-way road)|94|0|82588
+Rule 240 (1)|Use wheeled toy (dividing line/median strip)|94|0|82589
+Rule 240 (1)|Use wheeled toy (multi-lane one-way road)|94|0|82590
+Rule 240 (1)|Use wheeled device (speed limit greater than 50 km/h)|94|0|82587
+Rule 240 (1)|Use wheeled toy (speed limit greater than 50 km/h)|94|0|82585
+Rule 240 (2)(a)|Use wheeled device on prohibited road|94|0|82699
+Rule 240 (2)(b)|Use wheeled device on road at prohibited time|94|0|83526
+Rule 240 (2)(c)|Use propelled wheeled recreational device on road|94|0|82614
+Rule 240 (3)(a)|Use wheeled toy on prohibited road|94|0|83477
+Rule 240 (3)(b)|Use wheeled toy on road at prohibited time|94|0|83239
+Rule 240A|Disobey no wheeled recreational devices/toys sign|94|0|83545
+Rule 241 (1)(a)|Not keep left when using wheeled device/toy|94|0|82647
+Rule 241 (1)(b)|Travel alongside more than 1 (wheeled device/toy)|94|0|83546
+Rule 242 (1)(a)|Not keep left of shared/path (wheeled device/toy)|94|0|82910
+Rule 242 (1)(b)|Not give way on shared/path (wheeled device/toy)|94|0|82707
+Rule 243 (1)|Use wheeled device on pedestrian separated path|94|0|82806
+Rule 243 (2)|Obstruct bicycle on separated/path (wheeled device)|94|0|
+Rule 244 (1)|Use wheeled recreational device/toy being towed|94|0|82698
+Rule 244 (2)|Hold onto moving vehicle (wheeled device/toy)|94|0|82846
+Rule 244 (3)|Use wheeled recreational device/toy within 2m of vehicle|94|0|82844
+Rule 301 (1)|Lead animal while driving vehicle|94|0|83292
+Rule 301 (2)|Passenger lead animal while vehicle is moving|94|0|83446
+Rule 301 (3)|Bicycle rider lead animal when not permitted|94|0|83601
+Rule 302|Not give way when riding animal on footpath/nature strip|94|0|82866
+Rule 303 (1)|Ride animal more than 2 abreast (not multi-lane road)|94|0|83602
+Rule 303 (2)|Ride animal more than 2 abreast (marked lane)|94|0|83732
+Rule 303 (4)|Ride animal more than 1.5m from another rider|94|0|82865
+#Heavy Vehicles (Class B/C)
+Rule 127 (1)|Class B/C (Safe-T-Cam/avg speed zone): Long vehicle not required distance from other long vehicle|1688|4|
+Rule 132 (1)|Class B/C (Safe-T-Cam/avg speed zone): Not keep left of centre on two-way road|1688|4|
+Rule 132 (2)|Class B/C (Safe-T-Cam/avg speed zone): Not keep left of dividing line|1688|4|
+Rule 146 (1)|Class B/C (Safe-T-Cam/avg speed zone): Not drive within marked lane multi-lane road|1688|4|
+Rule 146 (2)|Class B/C (Safe-T-Cam/avg speed zone): Not drive within single line of traffic (no lines marked)|1688|4|
+Rule 147|Class B/C (Safe-T-Cam/avg speed zone): Move from marked lane to another across continuous line|1688|4|
+Rule 150 (1)|Class B/C (Safe-T-Cam/avg speed zone): Drive on/over continuous white edge line|1688|4|
+Rule 215-1 (1)|Class B/C (Safe-T-Cam/avg speed zone): Drive during period of darkness without prescribed lights|1688|4|
 #Licence (Road Transport Act & Regs)
-Sec 53 (1)(a)|Unlicensed driver (Class C etc / expired under 2 yrs) – 1st offence in 5 yrs|581|0
-Sec 53 (1)(a)|Unlicensed driver (Class C etc / expired under 2 yrs) – 2nd or subsequent|890|0
-Sec 53 (1)(a)|Unlicensed driver (expired over 2 yrs / heavy class) – 1st offence|697|0
-Sec 53 (1)(a)|Unlicensed driver (expired over 2 yrs / heavy class) – 2nd or subsequent|1393|0
-Sec 53 (3)|Unlicensed driver – never held a licence|890|0
-Sec 53 (1)(b)|Permit unlicensed driver – never held a licence|890|0
-Sec 175 (2)(a)|Driver fail/refuse to produce licence/state name/address|116|0
-Sec 175 (2)(b)|Driver state false name/address|116|0
-Cl 15 (1)(a)|Unaccompanied learner|890|0
-Cl 15 (1)(b)|Fail to display ‘L’ plates on car as required|272|2
-Cl 17 (1)(a)|Learner ride motorcycle with other person|272|2
-Cl 119 (1)|P1 driver under 25 drive 11pm–5am with more than 1 passenger under 21|581|7
-Cl 119 (1)|P1/P2 driver carry more than 1 passenger (licence conditions)|581|7
-Cl 119 (1)|Not comply P1 licence – no P plates (Class C)|272|2
-Cl 119 (1)|Fail to comply with licence conditions|272|2
-Cl 122 (1)(b)|Fail to notify change of address within 14 days|116|0
+Sec 53 (1)(a)|Unlicensed driver/rider (1st offence within last 5 years) – Class C/R/LR/MR licence|704|0|78985
+Sec 53 (1)(a)|Unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Class C/R/LR/MR licence|1079|0|78986
+Sec 53 (1)(a)|Unlicensed driver/rider (1st offence within last 5 years) – Class HR/HC/MC licence|844|0|78987
+Sec 53 (1)(a)|Unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Class HR/HC/MC licence|1688|0|78988
+Sec 53 (1)(a)|Unlicensed driver/rider (1st offence within last 5 years) – Other State Or Territory Licence|704|0|
+Sec 53 (1)(a)|Unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Other State Or Territory Licence|1079|0|
+Sec 53 (1)(a)|Unlicensed driver/rider (1st offence within last 5 years) – Expired Licence - Less Than 2 Years|704|0|101498
+Sec 53 (1)(a)|Unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Expired Licence - Less Than 2 Years|1079|0|101499
+Sec 53 (1)(a)|Unlicensed driver/rider (1st offence within last 5 years) – Expired Licence - More Than 2 Years|844|0|101496
+Sec 53 (1)(a)|Unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Expired Licence - More Than 2 Years|1688|0|101497
+Sec 53 (3)|Unlicensed driver/rider – Never Held A Licence|1079|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (1st offence within last 5 years) – Class C/R/LR/MR licence|704|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Class C/R/LR/MR licence|1079|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (1st offence within last 5 years) – Class HR/HC/MC licence|844|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Class HR/HC/MC licence|1688|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (1st offence within last 5 years) – Other State Or Territory Licence|704|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Other State Or Territory Licence|1079|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (1st offence within last 5 years) – Expired Licence - Less Than 2 Years|704|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Expired Licence - Less Than 2 Years|1079|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (1st offence within last 5 years) – Expired Licence - More Than 2 Years|844|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider (2nd or subsequent offence within last 5 years) – Expired Licence - More Than 2 Years|1688|0|
+Sec 53 (1)(b)|Permit unlicensed driver/rider – Never Held A Licence|1079|0|
+Sec 50 (a)|Unlawfully possess Australian driver licence|1079|0|78977
+Sec 50 (b)|Unlawfully possess article like Australian driver licence|1079|0|78978
+Cl 9 (2)|Fail to carry notice about condition|140|0|
+Cl 9 (3)(a)|Interstate conditional licence holder not carry licence containing conditions|140|0|
+Cl 9 (3)(b)|Interstate conditional licence holder not carry notice of conditions|140|0|
+Cl 93 (3)|Refuse to allow police officer to inspect alcohol interlock device|2204|0|
+Cl 41A (8)|Not produce drivers exemption on demand by police officer|140|0|
+Cl 41A (9)(a)|Obtain/​attempt to obtain exemption by false statement etc|423|0|
+Cl 41A (9)(b)|Falsely claim to police officer to have an exemption|423|0|
+Cl 41A (9)(d)(i)|Possess exemption letter forged or fraudulently altered|423|0|
+Cl 41A (9)(d)(ii)|Possess exemption letter obtained by false statement etc|423|0|
+Cl 41A (9)(e)|Unlawfully possess exemption letter/​resemblance of|423|0|
+Cl 41A (9)(f)|Give or lend exemption letter for fraudulent use by other|423|0|
+Cl 41A (9)(g)|Fraudulently use/​allow other to use exemption letter etc|423|0|
+Cl 41A (10)|Not surrender exemption letter after it ceases as prescribed|140|0|
+Cl 119 (1)|Drive with breath sample from other in alcohol interlock device|2204|0|
+Cl 119 (1)|Drive with alcohol interlock device not functioning/circumvented|2204|0|
+Cl 119 (1)|Drive without approved alcohol interlock device fitted|2204|0|
+Cl 119 (1)|Fail to comply with licence conditions|330|2|
+Cl 118 (2)|Fail to provide evidence about register contents|140|0|
+Cl 120|Fail to return licence|140|0|
+Cl 121|Fail to provide information when required|140|0|
+Cl 122 (1)(a)|Fail to notify change of name within 14 days|140|0|
+Cl 122 (1)(b)|Fail to notify change of address within 14 days|140|0|
+Cl 122 (1)(c)|Fail to notify change of service of notice address as prescribed|140|0|
+Cl 123 (2)|Fail to provide evidence for driver licence register|140|0|
+Cl 96 (14)(a)|Exempt visiting driver not carry licence card|140|0|
+Cl 96 (14)(b)|Exempt visiting driver not carry driver identification document|140|0|
+Cl 96 (14)(c)|Exempt visiting driver not produce driver identification document|140|0|
+Cl 96 (14)(c)|Exempt visiting driver not produce licence to police officer|140|0|
+#Learner & Provisional Licences
+Cl 15 (1)(a)|Unaccompanied learner|1079|0|
+Cl 15 (1)(b)|Fail to display ‘L’ plates on car as required|330|2|
+Cl 16 (a)|Fail to supervise driving|140|0|
+Cl 16 (b)|Person with learner not ensure road legislation not breached|140|0|
+Cl 17 (1)(a)|Learner ride motorcycle with other person|330|2|
+Cl 17 (1)(b)|Fail to display ‘L’ plate on motorcycle as required|330|2|
+Cl 17 (2)|Learner ride motor bike/trike not on approved list|704|4|
+Cl 18 (a)|Learner tow other vehicle|330|2|
+Cl 18 (b)|Learner drive towed vehicle|330|2|
+Cl 19|Cause/permit/allow learner breach|140|0|
+Cl 19|Owner/person in charge of vehicle fail to prevent learner breach|140|0|
+Cl 119 (1)|P1 class R ride motorcycle of prohibited capacity/power - 1st offence in 5 years|704|7|
+Cl 119 (1)|P1 class R ride motorcycle of prohibited capacity/power - 2nd/subsequent offence|1079|7|
+Cl 119 (1)|P1 driver under 25 drive between 11pm and 5am with more than 1 passenger under 21|704|7|
+Cl 119 (1)|P2 class R ride motorcycle of prohibited capacity/power - 1st offence in 5 years|704|7|
+Cl 119 (1)|P2 class R ride motorcycle of prohibited capacity/power - 2nd/subsequent offence|1079|7|
+Cl 119 (1)|Not comply with P1 pillion passenger restrictions|423|3|
+Cl 119 (1)|Not comply P2 licence - No P Plates as required|330|2|
+Cl 119 (1)|P1/P2 Driver fail to comply conditions of licence - Carry more than 1 passenger|704|7|
+Cl 119 (1)|P1/P2 Driver fail to comply conditions of licence - Drive prohibited vehicle|704|7|
+Cl 119 (1)|Not comply P1 licence - No P plates as required (Class C)|330|2|
+Cl 119 (1)|Not comply P1 licence - No P plate as required - (Class R)|330|2|
+Cl 23 (a)|Provisional P1 Class C holder tow vehicle over 250 kg|330|2|
+Cl 23 (b)|Provisional P1 Class R holder tow vehicle|330|2|
+Cl 39 (6)|Not produce exemption on demand by police officer|140|0|
+Cl 39 (7)(a)|Obtain/attempt to obtain exemption by false statement etc|423|0|
+Cl 39 (7)(b)|Falsely claim to police officer to have an exemption|423|0|
+Cl 39 (7)(c)|Forge/fraudulently alter exemption letter|423|0|
+Cl 39 (7)(d)|Possess exemption letter obtained by false statement/dishonest means|423|0|
+Cl 39 (7)(d)|Possess forged/fraudulently altered exemption letter|423|0|
+Cl 39 (7)(e)|Unlawfully possess exemption letter/resemblance of exemption letter|423|0|
+Cl 39 (7)(f)|Give/lend exemption letter for fraudulent use by other|423|0|
+Cl 39 (7)(g)|Fraudulently use/allow other to use exemption letter|423|0|
+Cl 39 (8)|Not surrender exemption letter to Authority after it ceases|140|0|
 #Drink & Drug Driving (1st offence)
-Sec 110 (1)(a)|Novice driver drive with novice range PCA – 1st offence|581|0
-Sec 110 (3)(a)|Drive with low range PCA – 1st offence|581|0
-Sec 111 (1)(a)|Drive with illicit drug present in oral fluid/blood/urine – 1st offence|581|0
+Sec 110 (1)(a)|Novice driver drive with novice range precribed concentration of alcohol - 1st Off.|704|0|79144
+Sec 110 (1)(b)|Novice driver attempt to drive with novice range precribed concentration of alcohol - 1st Off.|704|0|79147
+Sec 110 (2)(a)|Special category driver drive with special range precribed concentration of alcohol - 1st Off.|704|0|79148
+Sec 110 (2)(b)|Special category driver attempt to drive with special range precribed concentration of alcohol - 1st Off.|704|0|79150
+Sec 110 (2)(c)|Supervisor, special range precribed concentration of alcohol sit next to learner - 1st Off.|704|0|79152
+Sec 110 (3)(a)|Drive with low range precribed concentration of alcohol - 1st Off.|704|0|79154
+Sec 110 (3)(b)|Attempt to drive with low range precribed concentration of alcohol - 1st Off.|704|0|79156
+Sec 110 (3)(c)|Licensed driver, low range precribed concentration of alcohol sit next to learner - 1st Off.|704|0|79159
+Sec 111 (1)(a)|Drive with illicit drug present in oral fluid/blood/urine - 1st Off.|704|0|79172
+Sec 111 (1)(b)|Attempt to drive with illicit drug present in oral fluid/blood/urine - 1st Off.|704|0|79175
+Sec 111 (1)(c)|Licensed driver, illicit drug present in oral fluid/blood/urine sit next to learner - 1st Off.|704|0|79176
 #Registration, Insurance & Plates
-Sec 68 (1)|Use unregistered vehicle on road/area|697|0
-Sec 68 (1)|Use unregistered vehicle (heavy vehicle)|1472|4
-Sec 162 (1)|Vehicle not speed limiter compliant|2400|0
-MAC Act Sec 8 (1)|Use uninsured motor vehicle|697|0
-MVT Act Sec 9 (1)(a)|Owner drive/use vehicle with tax unpaid|697|0
-Cl 60 (1)(a)|Use vehicle without correctly fixed/displayed number plate|464|3
-Cl 60 (1)(a)|Use vehicle with obscured/defaced/illegible number plate|464|3
-Cl 129 (1)|Use vehicle with unauthorised number plate|464|3
-Cl 60 (1)(b)(i)|Defective brakes (not emergency brakes)|349|3
-Cl 60 (1)(b)(i)|Defective steering|349|3
-Cl 60 (1)(b)(i)|Seatbelt missing/defective|349|3
-Cl 60 (1)(b)(i)|Use unsafe/unserviced vehicle on road/area|194|0
-Cl 128 (2)|Use vehicle in breach of major defect notice|464|3
-Cl 84(1)|Use modified vehicle on road without compliance certificate|890|0
-Sec 119 (2)|Drive/stand vehicle with speed evasion article|1819|9
-#Bicycles
-Rule 245-1 (1)(c)|Ride bicycle recklessly|464|0
-Rule 250 (1)|Ride bicycle on footpath (16 years or older)|116|0
-Rule 256 (1)|Rider not wear bicycle helmet/fitted/fastened|349|0
-Rule 259 (a)|Ride bicycle without visible front white light|116|0
-Rule 258 (a)|Ride bicycle without working brake|116|0
-Rule 56 (1)(a)|Bicycle: not stop at stop line at red light|464|0
-Rule 247 (1)|Not ride in bicycle lane|116|0`;
-// Law part codes (Judicial Commission of NSW). Standard variant: motor vehicle, not school zone, not camera. "r" = repealed.
-const CODES={"27(1)":82812,"28(1)":82628,"28(1A)":83568,"29":82727,"88(1)":82636,"91(1)":83456,"31(1)&(2)":83313,"31(1)&(4)":83317,"32(1)":82719,"33(1)&(2)":82607,"33(1)&(3)":82608,"89(1)":82848,"91(2)":83514,"37(a)":83412,"37(b)":82761,"38":100898,"39(1)":83458,"39(2)":83540,"40":82705,"41":83590,"42(a)":83714,"42(b)":83574,"132(2A)":83372,"46(1)":83448,"46(1)&(2)":83449,"46(1)&(3)":83450,"48(1)":82746,"48(1)&(2)":82745,"51":82750,"53(1)":82785,"53(3)":82735,"56(1)(a)#1":82914,"56(1)(a)#2":82912,"56(1)(a)#3":87146,"56(2)(a)":83553,"57(1)(a)":83630,"59(1)#1":83403,"59(1)#2":83406,"59(1)#3":83404,"60":83489,"60A(1)":83701,"61(2)":83544,"61(5)":83480,"62(1)(a)":82879,"62(1)(b)(i)":83349,"62(1)(c)":83376,"63(2)":83298,"63(3)":83673,"64(a)":82737,"64(b)":83562,"66(1)":83243,"67(1)":82638,"68(1)#1":83484,"68(1)#2":83482,"69(1)":83578,"71(1)":82835,"72(1)#1":83438,"72(1)#2":83437,"73(1)#1":83474,"73(1)#2":83468,"74(1)(a)":82667,"75(1)(c)":83603,"85(a)":83628,"86(1)":83521,"87(1)":82828,"87(3)":83559,"128":82605,"76(1)":83287,"77(1)":82662,"78(1)":82808,"78(2)":82621,"78-1(2)(a)":95193,"78-1(2)(b)":95194,"79(1)":83301,"164(1)&(2)":83610,"80(1)":82840,"80(2)(b)":83364,"81(1)":82896,"81(2)":83626,"82":82862,"83":83571,"128A":82757,"90":83283,"92(1)":82871,"93(1)(a)":82620,"95(1)":83383,"96(1)":82582,"98(1)":83709,"99(1)":83515,"100":82700,"101(1)":83508,"102(1)":82560,"104(3)":83512,"111(1)&(2)":83290,"112(2)":83249,"113(2)":83425,"114(1)(a)":82748,"115(1)":82615,"117(1)":83623,"129(1)":82693,"130(1)(a)&(2)":83245,"130(1)(b)&(2)":83247,"131":83717,"132(1)":83279,"132(2)":82822,"135(1)":83566,"137(1)":83655,"138(1)":83343,"146(1)":82716,"146(2)":83381,"147":82688,"148(1)":83597,"148A":83358,"149":83265,"150(1)":83727,"159(1)":82885,"153(1)":83633,"154(1)":82791,"155(1)":83485,"156(1)":83537,"157(1)":83302,"157-1(1)":83465,"125(1)":83400,"126":82709,"140":82736,"141(1)":83524,"142(1)":83459,"144(a)":83368,"144(b)":83288,"144-1(1)":87144,"145":83649,"264":100927,"265(1)":83359,"265(3)#1":102356,"265(3)#2":102357,"265(3)#3":102358,"265(3)#4":102359,"266(1)#1":"83326r","266(1)#2":"83327r","266(1)#3":"83324r","266(1)#4":"83325r","267-1(2)(b)":82617,"268-2(2)":83240,"151A(2)":95673,"270(1)(a)":83390,"270(1)(b)":82670,"270(2)":83658,"271(1)(a)":100928,"271(4)":83402,"271-1(1)":82867,"297(1)":83355,"297(2)":82601,"297(1A)":83585,"299(1)(a)":83604,"300":83379,"300-1":88366,"272(a)":83504,"224":82810,"268(3)":83648,"287(1)&(3)":83252,"288(1)":82594,"289(1)":82581,"290":83304,"291":83520,"292(a)":83267,"293(2)":83367,"294(2)(b)":82619,"296(1)":83452,"298-1":82557,"300-5":83509,"304(1)":82843,"215-1(1)":83533,"218(1)(a)":83498,"218(1)(b)":83608,"219":83637,"218-1(f)":82652,"245-1(1)(c)":83271,"250(1)":92732,"256(1)":82631,"259(a)":83454,"258(a)":83501,"247(1)":82578};
-const seen={};
+Sec 68 (1)|Use unregistered vehicle on road/area|844|0|
+Sec 68 (1)|Use unregistered vehicle on road/area (heavy vehicle)|1784|4|
+Sec 68 (1)|Use unregistered vehicle on road/area (heavy vehicle)(camera detected)|1784|4|
+Sec 68 (1)|Use unregistered trailer on road/area|844|0|79788
+Sec 68 (1)|Stand unregistered trailer (not part of combination)|235|0|85252
+Sec 73 (3)|Fail to make/keep/produce record of interstate number plate|1784|0|79074
+Sec 75 (2)|Fail to provide documentation relating to use of a vehicle|1784|0|
+Cl 23 (4)|Not comply notice to return number plate distinguishing number altered|140|0|
+Cl 29 (1)|Plate holder fail to surrender damaged number plate|140|0|
+Cl 30 (1)(a)|Not notify authority of lost/stolen/destroyed number plate|140|0|
+Cl 30 (1)(b)|Not deliver number plate to authority|140|0|
+Cl 31 (a)|Not notify recovery of lost/stolen number plate|140|0|
+Cl 31 (b)|Not deliver recovered lost/stolen number plate to Authority|140|0|
+Cl 34 (1)|Unlawfully possess number plates|3098|0|
+Cl 34 (2)|Unlawfully possess thing resembling number plate|3098|0|
+Cl 36 (8)|Fail to return number plates within period specified in notice|140|0|
+Cl 37 (1)(a)|Registered operator fail to notify change of garage address|140|0|
+Cl 37 (1)(b)|Registered operator fail to notify change of name/address|140|0|
+Cl 37 (2)(a)|Registered operator heavy vehicle fail to advise of vehicle destroyed or written-off|140|0|
+Cl 37 (2)(b)|Registered operator heavy vehicle fail to advise of written-off by insurer|140|0|
+Cl 37 (3)(a)|Registered operator fail to notify change to vehicle affecting reg. certificate|140|0|
+Cl 37 (3)(b)|Registered operator fail to notify change to vehicle incurs additional charge|140|0|
+Cl 37 (4)(a)|Use changed vehicle before Authority notified of change|140|0|
+Cl 37 (4)(a)|Use changed vehicle before additional fee or charge paid|140|0|
+Cl 37 (6)|Registered operator fail to provide vehicle for inspection|140|0|
+Cl 37 (7)|Registered operator fail to provide information in relation to garage address|140|0|
+Cl 39 (1)(a)|Acquirer fail to apply for transfer of registration|140|0|
+Cl 39(1)(b)|Acquirer fail to transfer fee/duty payable|140|0|
+Cl 39(1)(c)|Acquirer fail to provide evidence of court order etc|140|0|
+Cl 42(3)|Fail to deliver cancelled registration certificate|140|0|
+Cl 43(4)|Registered operator fail to return number-plates registration expired|140|0|
+Cl 47(5)|Registered operator fail to return number-plates after registration cancelled|140|0|
+Cl 52(3)(a)|Authorise test drive traders plate not issued to authoriser|140|0|
+Cl 52(3)(b)|Authorise traders plate test drive not genuine purchaser|140|0|
+Cl 52(3)(c)|Authorise traders plate test drive not record driver details|140|0|
+Cl 52(3)(d)|Authorise traders plate test drive no written authorisation|140|0|
+Cl 53(a)|Fail to record particulars for each traders plate drive|140|0|
+Cl 53(b)|Fail to retain traders plate records as prescribed|140|0|
+Cl 53(c)|Fail to produce traders plate record when required|140|0|
+Cl 54|Fail to answer truthfully questions relating to use of traders plate|140|0|
+Cl 55|Former trader fail to notify Authority and deliver traders plate to Authority|140|0|
+Cl 56(2)|Fail to return traders plate on expiration of issue period|140|0|
+Cl 56(3)|Allow to be driven vehicle with expired traders plate - Camera detected|140|0|
+Cl 56(3)|Allow to be driven vehicle with expired traders plate|140|0|
+Cl 56(3)|Drive vehicle with expired traders plate|140|0|
+Cl 56(3)|Drive vehicle with expired traders plate - Camera detected|140|0|
+Cl 56(3)|In charge of vehicle with expired traders plate|140|0|
+Cl 60 (1)(a)|Use vehicle without correctly fixed/displayed number plate|562|3|
+Cl 60 (1)(a)|Use vehicle with obscured/defaced/illegible number plate|562|3|
+Cl 129 (1)|Use vehicle with unauthorised number plate|562|3|
+Cl 129 (3)(a)|Use vehicle displaying altered plate|562|3|
+Cl 129 (3)(b)|Use vehicle displaying misleading plate|562|3|
+Cl 129 (2)|Use registrable vehicle not display authorised number-plates|140|0|
+Cl 129 (3)(c)|Use class A vehicle display auxiliary number-plate not in accordance with clause 22(4)|562|0|
+Cl 129 (4)|Operator class A vehicle cause/permit/allow contravention of subclause (1), (2) or (3)|140|0|
+Cl 129 (4)|Operator class A vehicle fail to prevent contravention of subclause (1),(2) or (3)|140|0|
+Cl 60 (1)(a)|Use vehicle without correctly fixed/displayed number plate|844|3|
+Cl 60 (1)(a)|Use vehicle with obscured/defaced/illegible number plate|844|3|
+Cl 129 (1)|Use vehicle with unauthorised number plate|844|3|
+Cl 129 (3)(a)|Use vehicle displaying altered plate|844|3|
+Cl 129 (3)(b)|Use vehicle displaying misleading plate|844|3|
+Cl 129 (1)(b)|Registration label not affixed|844|0|
+Cl 129 (3)(c)|Use vehicle display auxiliary number-plate not in accordance with clause 22(4)|844|0|
+Cl 129 (4)|Operator cause/permit/allow contravention of subclause (1), (2) or (3)|844|0|
+Cl 129 (4)|Operator fail to prevent contravention of subclause (1), (2) or (3)|844|0|
+Sec 8 (1)|Use uninsured motor vehicle|844|0|74912
+Sec 8 (1)|Cause uninsured motor vehicle to be used|844|0|33336
+Sec 8 (1)|Permit uninsured motor vehicle to be used|844|0|33337
+Sec 9 (1)(a)|Owner drive/use vehicle with tax unpaid|844|0|9338
+Sec 9 (1)(b)|Owner cause driving/use of vehicle with tax unpaid|844|0|9339
+Sec 9 (1)(c)|Owner permit driving/use of vehicle with tax unpaid|844|0|
+#Vehicle Standards & Defects
+Cl 60 (1)(b)(i)|Use vehicle with dangerous protrusion|423|3|
+Cl 60 (1)(b)(i)|Frontal protection system not compliant|235|0|
+Cl 60 (1)(b)(i)|Defective LPG/CNG equipment/labelling|235|0|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with headlights standard|140|0|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with tail lights standard|140|0|
+Cl 60 (1)(b)(i)|Defective brake lights|140|0|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with dimensions standard|140|0|
+Cl 60 (1)(b)(i)|Defective brakes (not emergency brakes)|423|3|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with emergency brake standard|140|0|
+Cl 60 (1)(b)(i)|Defective steering|423|3|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with overhang standard|140|0|
+Cl 60 (1)(b)(i)|Oil/grease leaks|235|0|
+Cl 60 (1)(b)(i)|Seatbelt missing/defective|423|3|
+Cl 60 (1)(b)(i)|Defective seating|423|3|
+Cl 60 (1)(b)(i)|Defective door latch/hinge|140|0|
+Cl 60 (1)(b)(i)|Undue emission/inefficient/silencer|235|0|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with tyres standard|140|0|
+Cl 60 (1)(b)(i)|Use light vehicle fire extinguisher not compliant|140|0|
+Cl 60 (1)(b)(i)|Not fitted/equipped seat belts/anchorages|423|3|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with warning signs standard|140|0|
+Cl 60 (1)(b)(i)|Use light vehicle not comply with standard - other|140|0|
+Cl 60 (1)(b)(i)|Use vehicle cause danger/annoyance|235|0|
+Cl 60 (1)(b)(i)|Use unsafe/unserviced vehicle on road/area|235|0|
+Cl 60 (1)(b)(i)|Defective body/chassis/structural member|235|0|
+Cl 60 (2)|Operator vehicle used in contravention of Sec 60 (1)|140|0|
+Cl 60 (4)(a)|Employee not prepare a vehicle condition report|140|0|
+Cl 60 (4)(b)(i)|Employee not leave vehicle condition report copy with registered operator|140|0|
+Cl 60 (4)(b)(ii)|Employee not leave copy of vehicle condition report with nominated person|140|0|
+Cl 60 (5)(a)|Operator not give employee vehicle condition report form|140|0|
+Cl 60 (5)(a)|Operator not nominate vehicle condition report form receiver|140|0|
+Cl 64 (1)|Carry out non complying modifications to registered light vehicle|844|0|
+Cl 66 (4)(a)|Not comply with notice to present vehicle for inspection|140|0|
+Cl 66 (4)(b)|Not comply with changed notice to present vehicle for inspection|140|0|
+Cl 68 (8)(a)|Conduct test/inspection without examiner authority|140|0|
+Cl 68 (8)(b)|Issue inspection report without examiner authority|140|0|
+Cl 68 (9)|Breach condition of examiner authority|140|0|
+Cl 68 (10)|Issue false/misleading inspection report|330|0|
+Cl 69 (4)|Use premises for inspection/test without examiner authority|140|0|
+Cl 69 (6)|Permit issue of false/misleading inspection report|330|0|
+Cl 77 (1)|Stamp/affix vehicle part number without examiner authority|140|0|
+Cl 77 (2)|Alter/deface vehicle part number without authority|140|0|
+Cl 77 (3)|Possess vehicle part with altered/defaced number|140|0|
+Cl 78 (a)|Not notify authority changed/replaced vehicle part|140|0|
+Cl 78 (b)|Not notify details of changed/replaced vehicle part|140|0|
+Cl 78 (c)|Not retain copy of vehicle part change/replacement notification|140|0|
+Cl 78 (d)|Not produce vehicle part change/replacement notification to police|140|0|
+Cl 80(4)|Driver fail to send defect notice to registered operator|423|0|
+Cl 80(7)|Driver fail to send written warning to registered operator|140|0|
+Cl 81(6)|Deface or remove defective vehicle label when not authorised|423|0|
+Cl 84(1)|Use modified vehicle on road without compliance certificate|1079|0|
+Cl 85(2)|Issue compliance certificate without licence etc|844|0|
+Cl 85(5)|Issue false or misleading compliance certificate|844|0|
+Cl 85(6)|Fail to pay fee for compliance certificate as prescribed|423|0|
+Cl 128 (2)|Permit conditionally registered vehicle in breach of registration condition|140|0|
+Cl 128 (2)|Use conditionally registered vehicle in breach of registration condition|140|0|
+Cl 128 (2)|Use vehicle in breach of minor defect notice|423|1|
+Cl 128 (2)|Use vehicle in breach of major defect notice|562|3|
+Cl 128 (2)|Permit vehicle in breach of minor defect notice|423|0|
+Cl 128 (2)|Permit vehicle in breach of major defect notice|562|0|
+Cl 128 (3)|Cause/permit use of unregistered vehicle|844|0|
+Cl 128 (3)|Cause/permit use of unregistered vehicle - camera detected|844|0|
+Cl 128 (5)|Cause/permit use of vehicle - registration suspended|844|0|
+Cl 128 (5)|Cause/permit use of vehicle - registration suspended - camera detected|844|0|
+Cl 130 (1)|Not provide required notification to Authority|140|0|
+Cl 130 (3)|Provide false/misleading garage address location|140|0|
+#Written-off Vehicles & Certifiers
+Sec 90 (1)(a)|Assessor not ensure assessment made by trained person|844|0|79107
+Sec 90 (1)(b)|Assessor not ensure assessment by person not advised by trained person|844|0|79108
+Sec 91 (a)|Assessor not include if non-repairable damage - prior offence|1784|0|79113
+Sec 91 (a)|Assessor not include whether non-repairable damage - 1st offence|1784|0|79110
+Sec 91 (b)|Assessor not base cost calculation as prescribed - 1st offence|1784|0|
+Sec 91 (b)|Assessor not base cost calculation as prescribed - prior offence|1784|0|
+Sec 92 (1)|Assessor not provide written record of assessment|844|0|79114
+Sec 92 (2)|Assessor not provide Authority written record of assessment|1784|0|96607
+Sec 93 (1)|Assessor not provide Authority information to assessment of veh as total loss|1784|0|79116
+Sec 93 (2)|Self-insurer not provide information relating to total loss as prescribed|1784|0|79117
+Sec 93 (3)|Auto-dismantler not provide information as prescribed|1784|0|79118
+Sec 94 (1)|Assessor not keep prescribed records for 7 years|1784|0|79119
+Sec 94 (3)|Fail to comply with direction to produce records|1784|0|79120
+Sec 96|Not remove/deface/obliterate/destroy vehicle identifier as required|844|0|79123
+Sec 97 (1)(a)|Not attach written-off warning label to dismantled part|844|0|95350
+Sec 97 (1)(b)|Not attach written-off warning label to vehicle|844|0|95351
+Sec 97 (2)|Not attach written-off warning label within required period|844|0|79126
+Sec 98 (6)|Advertise willing to issue certificate of compliance when not licensed|1784|0|
+Sec 98 (6)|Purport to issue certificate of compliance when not licensed|1784|0|79129
+Cl 90(5)|Breach a condition of the certifiers licence|1079|0|
+Cl 93(1)|Fail to record prescribed information in relation to each inspection undertaken|844|0|
+Cl 93(2)|Fail to keep record for prescribed period|844|0|
+Cl 93(3)|Fail to produce record when required|844|0|
+Cl 94(2)|Hold out that certifier is covered by required insurance|1079|0|
+Cl 94(3)|Fail to be covered by required insurance as prescribed|1079|0|
+Cl 95(1)|Issue document purporting to be compliance certificate|1079|0|
+Cl 95(2)|Purport to issue compliance certificate without licence|1079|0|
+Cl 109(2)|Insurer not provide information relating to notifiable vehicle as prescribed|423|0|
+Cl 112(1)|Not keep register relating to prescribed returned vehicle insured|423|0|
+Cl 112(2)|Assessor not keep register for prescribed period|423|0|
+Cl 113(a)|Not attach written-off warning label to identifier part|423|0|
+Cl 113(b)|Not attach written-off warning label to vehicle|423|0|
+Cl 116|Alter/damage/destroy etc written-off vehicle warning label|844|0|
+Cl 119|Issue certificate of compliance repairs not as prescribed|1784|0|
+Cl 121|Not keep record of prescribed information relating to issue etc of compliance certificate|423|0|
+#Speed Evasion Devices
+Sec 119 (1)|Sell/offer for sale/purchase vehicle with speed evasion article|2204|0|79227
+Sec 119 (2)|Drive/stand vehicle with speed evasion article|2204|9|79228
+Sec 119 (3)|Responsible person vehicle driven with speed evasion article|2204|0|79229
+Sec 119 (3)|Responsible person vehicle stood with speed evasion article|2204|0|79229
+Sec 120 (3)|Fail to surrender speed evasion article|2204|0|79231
+#Identity & Vehicle Sanctions
+Sec 143 (6)|Fail to pay tow-away charge|423|0|79240
+Sec 162 (1)|Vehicle not speed limiter compliant when driven on road or road related area|2909|0|79293
+Sec 175 (2)(a)|Driver/rider fail/refuse to produce licence/state name/address|140|0|84712
+Sec 175 (2)(b)|Driver/rider state false name/address|140|0|79305
+Sec 177 (1)|Responsible person/custodian not disclose drivers identity|1079|0|79314
+Sec 177 (1)|Refuse to give info leading to drivers identification|1079|0|79316
+Sec 188 (1)|Fail to supply name, address of camera recorded offender (person)|844|0|
+Sec 188 (1)|Fail to supply name, address of camera recorded offender (corporation) - 1st off|1784|0|
+Sec 188 (1)|Fail to supply name, address of camera recorded offender (corporation) - 2nd/sub off|4783|0|
+Sec 188 (2)|Falsely declare another person as camera recorded offender (person)|844|0|
+Sec 188 (2)|Falsely declare another person as camera recorded offender (corporation)|1784|0|79326
+Sec 239 (2)|Not attach number plate confiscation notice as required|2909|0|79338
+Sec 243 (1)|Not move/produce vehicle subject to production notice|3098|0|79339
+Sec 243 (2)|Not remove/produce plates subject to production notice|3098|0|79340
+Sec 244 (1)|Operate vehicle during number plate confiscation period|2909|0|79341
+Sec 244 (2)|Remove/tamper with number plate production notice|2909|0|79342
+Sec 244 (3)(a)|Operate vehicle in confiscation period with plate affixed|2909|0|79343
+Sec 244 (3)(b)|Operate vehicle in confiscation period with altered plate|2909|0|79344
+Sec 244 (3)(c)|Operate vehicle in confiscation period with resembling plate|2909|0|79345
+Sec 244 (4)|Operate vehicle not subject to confiscation - notice attached|1079|0|79346
+#Other Regulations
+Sec 11(1)|Cause/permit/allow use of dangerous goods transporter on/in prohibited area-not driver|562|0|
+Sec 14(1)|Fail to inspect driver licence before permitting another to drive|140|0|97155
+Sec 17(1)(a)|Bus owner not attach 2 signs complying with clause 17(2)|423|0|97158
+Sec 17(1)(b)|Bus owner not provide 2 signs etc complying with clause 17(2)|423|0|97159
+Sec 18(1)|Owner permits school bus to be driven without warning system attached|423|0|97160
+Sec 19(2)|Owner permits bus driven without prescribed safety fittings|423|0|97161
+Sec 19(3)|Person drives bus without prescribed safety fittings|235|0|97162
+Sec 20(2)|Bus door closing force exceed prescribed limit - bus owner|235|0|97163
+Sec 20(3)|Bus door closing force exceed prescribed limit - bus driver|235|0|97164
+Sec 27(1)|Prevent or likely to prevent clear observation of prescribed traffic control device|235|0|97165
+Sec 27(3)|Not comply with direction to remove matter or thing blocking traffic control device|235|0|97166
+Sec 28(1)|Unlawfully display do not overtake turning vehicle sign|235|0|97167
+Sec 52(1)|Drive articulated vehicle exceeding 19 metres in length - s 60(1)(e)|235|0|97172
+Sec 52(1)|Drive articulated vehicle with unlawful projecting load etc - s 60(1)(d)|235|0|
+Sec 52(1)|Drive motor bike + sidecar with unlawful projecting load etc - s 60(1)(c)|235|0|97170
+Sec 52(1)|Drive motor bike with unlawful projecting load etc - s 60(1)(b)|235|0|97169
+Sec 52(1)|Drive motor lorry if total mass exceeds mass limit - s55(1)|1079|0|97176
+Sec 52(1)|Drive motor vehicle and trailer exceeding 19 m in length - s 60(1)(f)|235|0|97173
+Sec 52(1)|Drive vehicle with unlawful projecting load etc - s 60(1)(a)|235|0|97168
+Sec 52(1)|Drive with load not restrained by appropriate method-s66(3)|1079|0|97179
+Sec 52(1)|Drive with load not secured likely to fall/dislodged-s66(2)|1079|0|97178
+Sec 52(1)|Drive with load placed in way make vehicle unsafe etc-s66(1)|1079|0|97177
+Sec 52(1)|Fail to mark end of loading etc with red flag/other object as prescribed - s 60(5)(a)|235|0|97174
+Sec 52(1)|Not attach lamp/reflectors to rear of loading etc as prescribed - s 60(5)(b)|235|0|97175
+Sec 59(4)|Responsible person fail to provide information/certificate|330|0|97180
+Sec 64|Drive three-wheeled motor vehicle exceed certified load mass|330|0|97181
+Sec 67(a)|Drive motor vehicle where view of traffic prevented|330|0|97182
+Sec 67(b)|Drive motor bike view of overtaking vehicle prevented|330|0|97183
+Sec 67(c)|Drive vehicle if prevented from safely driving or controlling vehicle|562|0|97184
+Sec 72(1)(a)|Driver not carry copy of notice or permit as prescribed|235|0|97185
+Sec 72(1)(b)|Driver not carry information sheet as prescribed|235|0|97186
+Sec 88(1)|Falsely represent relevant parking fee has been paid|330|0|97188
+Sec 89(a)|Damage pay parking device|330|0|97189
+Sec 89(b)|Deface pay parking device|235|0|97191
+Sec 89(c)|Affix anything to pay parking device|235|0|97192
+Sec 89(d)|Unlawfully interfere with etc proper working of pay parking device|330|0|97190
+Sec 106(2)|Holder of scheme authority not comply with s 106(1) notice|140|0|97195
+Sec 108(1)|Holder of scheme authority fail to notify prescribed change|140|0|97196
+Sec 108(3)|Holder of scheme authority fail to comply with s 108(2) notice|140|0|97197
+Sec 114(1)|Display scheme authority in or on vehicle contravening condition|844|0|97198
+Sec 114(2)|Permit possession/access to scheme authority to another if suspect contravention|844|0|97199
+Sec 115|Reproduce/copy/deface/alter or destroy a scheme authority|844|0|97200
+Sec 116|Scheme authority holder fail to return scheme authority if cease to be disabled|844|0|97201
+Sec 117(2)|Not immediately comply with s 117(1) direction to remove authority|844|0|97202
+Sec 118(3)|Individual or organisation fail to return expired authority|844|0|97203r
+Sec 119(4)|Individual or organisation fail to return revoked authority|844|0|97205
+Sec 119(5)|Unincorporated association fail to return revoked authority|844|0|97206
+Sec 123(1)|Falsely represent goods vehicle is parked lawfully in controlled loading zone|330|0|97207
+Sec 124(a)|Damage a loading zone device|330|0|97208
+Sec 124(b)|Deface a loading zone device|235|0|97211
+Sec 124(c)|Affix anything to a loading zone device|235|0|97212
+Sec 124(d)|Unlawfully interfere with proper working of loading zone device|330|0|97209
+Sec 124(e)|Unlawfully interfere with proper working of loading zone device|330|0|97210
+Sec 163(6)|Laden mass exceeds limit notice max by not more than 1 tonne|423|0|97232
+Sec 163(6)|Laden mass exceeds limit notice max by not more than 2 tonne|844|0|97233
+Sec 26 (2)|Refuse to comply with requirement of authorised officer|140|0|81601r
+Cl 33 (1)|Drive/use vehicle with sound system emitting offensive noise|200|2|106947`;
 const D=[];let cat="";
-RAW.split("\n").forEach(l=>{if(l[0]==="#"){cat=l.slice(1);return}const p=l.split("|");
-const k=p[0].replace(/^Rule /,"").replace(/ /g,"");seen[k]=(seen[k]||0)+1;
-let c=CODES[k+"#"+seen[k]]||CODES[k]||"";const rep=/r$/.test(c);c=String(c).replace(/r$/,"");
-D.push({rule:p[0],desc:p[1],fine:+p[2],pts:parseInt(p[3])||0,dbl:/d$/.test(p[3]),cat,code:c,rep})});
+RAW.split("\n").forEach(l=>{if(!l.trim())return;if(l[0]==="#"){cat=l.slice(1);return}const p=l.split("|");let c=p[4]||"";const rep=/r$/.test(c);c=c.replace(/r$/,"");
+D.push({rule:p[0],desc:p[1],fine:+p[2],pts:parseInt(p[3])||0,dbl:/d/.test(p[3]),sch:/s/.test(p[3]),cat,code:c,rep})});
 const cats=[...new Set(D.map(d=>d.cat))];
 let active=null,about=false,homeY=0,recents=[];
 try{recents=JSON.parse(localStorage.getItem("to_recent")||"[]")}catch(e){}
@@ -341,9 +1127,9 @@ function saveR(){try{localStorage.setItem("to_recent",JSON.stringify(recents))}c
 function addRecent(v){v=v.trim();if(v.length<2)return;recents=[v,...recents.filter(x=>x.toLowerCase()!==v.toLowerCase())].slice(0,8);saveR()}
 function recHtml(){if(!recents.length)return"";return '<div class="rec"><div class="rh"><span>Recent searches</span><button class="clrr">Clear</button></div><div class="rcs">'+recents.map(r=>'<button class="rc" data-q="'+esc(r).replace(/"/g,"&quot;")+'">'+esc(r)+'</button>').join("")+'</div></div>'}
 function openAbout(){if(!about&&!active&&!q.value)homeY=window.scrollY;about=true;render();window.scrollTo({top:0})}
-const ABOUT=`<div class="about"><h2>Declaration</h2><div class="box"><p>This app is an independent, unofficial reference tool. It is <b>not</b> associated with, endorsed by or affiliated with the NSW Government, Transport for NSW, Service NSW, the Judicial Commission of NSW or any other government body.</p><p>It only reorganises publicly available information. It is a guide only, is not legal advice, and does not replace the relevant legislation. Fines, demerit points and law part codes can change, so always check the official sources before relying on anything shown here.</p></div><h2>Sources used</h2><div class="box"><ul><li><b>Fines and demerit points:</b> NSW Government “General driving offences” penalties guide (as at 1 July 2020).</li><li><b>Law part codes:</b> Judicial Commission of NSW, Lawcodes – Road Rules 2014 (printed 14 November 2026).</li><li><b>Rule numbers and offence wording:</b> Road Rules 2014 (NSW), made under the Road Transport Act 2013.</li></ul></div><h2>Official resources</h2><div class="box"><ul><li><a href="https://legislation.nsw.gov.au" target="_blank" rel="noopener">legislation.nsw.gov.au</a> – current NSW legislation</li><li><a href="https://lawcodes.judcom.nsw.gov.au" target="_blank" rel="noopener">lawcodes.judcom.nsw.gov.au</a> – law part codes</li><li><a href="https://www.nsw.gov.au" target="_blank" rel="noopener">nsw.gov.au</a> – NSW Government road rules and penalties</li></ul></div><h2>Privacy</h2><div class="box"><p>No accounts, no personal information collected, no cookies and no analytics or tracking. All searching happens on your device.</p><p>Recent searches and your light/dark choice are saved only in your browser on this device and are never sent anywhere. Use “Clear” on the home screen to remove them.</p><p>The site is hosted on GitHub Pages, which may log standard technical data such as IP addresses under GitHub’s own privacy policy.</p></div><h2>How it was made</h2><div class="box"><p>A single HTML page (HTML, CSS and JavaScript, with no external libraries) built with the help of AI (Claude by Anthropic) from the sources listed above.</p></div></div>`;
+const ABOUT=`<div class="about"><h2>Declaration</h2><div class="box"><p>This app is an independent, unofficial reference tool. It is <b>not</b> associated with, endorsed by or affiliated with the NSW Government, Transport for NSW, Service NSW, the Judicial Commission of NSW or any other government body.</p><p>It only reorganises publicly available information. It is a guide only, is not legal advice, and does not replace the relevant legislation. Fines, demerit points and law part codes can change, so always check the official sources before relying on anything shown here.</p></div><h2>Sources used</h2><div class="box"><ul><li><b>Fines and demerit points:</b> NSW Government “General driving offences” penalties guide (as at 1 July 2025).</li><li><b>Law part codes:</b> Judicial Commission of NSW, Lawcodes – Road Rules 2014, Road Transport Act 2013, Road Transport (General) Regulation 2021 and other Acts and regulations (printed 14 November 2026).</li><li><b>Rule numbers and offence wording:</b> Road Rules 2014 (NSW), made under the Road Transport Act 2013.</li><li><b>Note on codes:</b> law part codes are shown where there is one clear match. Offences under the Driver Licensing and Vehicle Registration regulations have no code yet. School zone, camera, bicycle and other variants can have different codes, so confirm the exact code before using it.</li></ul></div><h2>Official resources</h2><div class="box"><ul><li><a href="https://legislation.nsw.gov.au" target="_blank" rel="noopener">legislation.nsw.gov.au</a> – current NSW legislation</li><li><a href="https://lawcodes.judcom.nsw.gov.au" target="_blank" rel="noopener">lawcodes.judcom.nsw.gov.au</a> – law part codes</li><li><a href="https://www.nsw.gov.au" target="_blank" rel="noopener">nsw.gov.au</a> – NSW Government road rules and penalties</li></ul></div><h2>Privacy</h2><div class="box"><p>No accounts, no personal information collected, no cookies and no analytics or tracking. All searching happens on your device.</p><p>Recent searches and your light/dark choice are saved only in your browser on this device and are never sent anywhere. Use “Clear” on the home screen to remove them.</p><p>The site is hosted on GitHub Pages, which may log standard technical data such as IP addresses under GitHub’s own privacy policy.</p></div><h2>How it was made</h2><div class="box"><p>A single HTML page (HTML, CSS and JavaScript, with no external libraries) built with the help of AI (Claude by Anthropic) from the sources listed above.</p></div></div>`;
 const P={left:'<path d="M18 20v-8a4 4 0 0 0-4-4H6M10 4L6 8l4 4"/>',right:'<path d="M6 20v-8a4 4 0 0 1 4-4h8M14 4l4 4-4 4"/>',u:'<path d="M6 20V9a5 5 0 0 1 10 0v9M12 14l4 4 4-4"/>',sig:'<path d="M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4"/>',tl:'<rect x="8" y="2" width="8" height="20" rx="2"/><circle cx="12" cy="7" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="17" r="1.4"/>',lane:'<path d="M8 3L4 21M16 3l4 18M12 4v3M12 10v4M12 17v3"/>',rb:'<path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/>',belt:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',moto:'<circle cx="6" cy="17" r="3"/><circle cx="18" cy="17" r="3"/><path d="M6 17l4-7h5l3 7M10 10L9 7H7M14 10l1-3h2"/>',phone:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',bike:'<circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-8h5l3 8M10 8H8M15 8l-3 8"/>',ovt:'<path d="M3 8h12M11 4l4 4-4 4M3 17h18M17 13l4 4-4 4"/>',bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5V16h8v-2.5A6 6 0 0 0 12 3z"/>',lic:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c0-2 6-2 6 0"/>',ban:'<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/>',doc:'<path d="M7 3h8l4 4v14H7zM15 3v4h4M10 12h6M10 16h6"/>',ped:'<circle cx="12" cy="5" r="2"/><path d="M12 8v6l-3 6M12 14l3 6M8 11l4-3 4 3"/>',siren:'<path d="M7 18v-6a5 5 0 0 1 10 0v6M5 18h14M12 3v2M4 8l1.5 1M20 8l-1.5 1"/>',bus:'<rect x="4" y="4" width="16" height="13" rx="2"/><path d="M4 11h16"/><circle cx="8" cy="19.5" r="1.2"/><circle cx="16" cy="19.5" r="1.2"/>',stop:'<polygon points="8 3 16 3 21 8 21 16 16 21 8 21 3 16 3 8"/><path d="M8 12h8"/>',car:'<path d="M5 16v-4l2-5h10l2 5v4M3 16h18v3H3zM7 12h10"/>'};
-function icon(c){const k=/^Left/.test(c)?'left':/^Right/.test(c)?'right':/U-Turn/.test(c)?'u':/Signal/.test(c)?'sig':/Traffic Lights/.test(c)?'tl':/Lanes &/.test(c)?'lane':/Roundabout/.test(c)?'rb':/Seatbelt/.test(c)?'belt':/Motorcycle/.test(c)?'moto':/Mobile/.test(c)?'phone':/Bicycle/.test(c)?'bike':/Overtaking/.test(c)?'ovt':/^Lights/.test(c)?'bulb':/Licence/.test(c)?'lic':/Drink/.test(c)?'ban':/Registration/.test(c)?'doc':/Crossings/.test(c)?'ped':/Emergency/.test(c)?'siren':/^Bus,/.test(c)?'bus':/Signs/.test(c)?'stop':'car';return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>'}
+function icon(c){const k=/^Left/.test(c)?'left':/^Right/.test(c)?'right':/U-Turn/.test(c)?'u':/Signal/.test(c)?'sig':/Traffic Lights/.test(c)?'tl':/Lanes &/.test(c)?'lane':/Roundabout/.test(c)?'rb':/Seatbelt/.test(c)?'belt':/Motorcycle/.test(c)?'moto':/Mobile/.test(c)?'phone':/Bicycle/.test(c)?'bike':/Overtaking/.test(c)?'ovt':/^Lights/.test(c)?'bulb':/Licence/.test(c)?'lic':/Drink/.test(c)?'ban':/Registration/.test(c)?'doc':/Crossings/.test(c)?'ped':/Emergency/.test(c)?'siren':/^Bus,/.test(c)?'bus':/Signs/.test(c)?'stop':/Pedestrians/.test(c)?'ped':/Standards|Written|Other/.test(c)?'doc':/Heavy/.test(c)?'bus':/Evasion/.test(c)?'ban':/Identity/.test(c)?'lic':'car';return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>'}
 const $=id=>document.getElementById(id);
 const q=$("q"),list=$("list"),meta=$("meta"),chips=$("bar"),clr=$("clr");
 const esc=s=>s.replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -361,11 +1147,11 @@ function render(){
  meta.textContent=rows.length+" offence"+(rows.length===1?"":"s")+(active?" in "+active:"");
  if(!rows.length){list.innerHTML='<div class="empty">No offences found.<br>Try a different word, a rule number, or another category.</div>';return}
  let h="",last="";
- rows.forEach(d=>{
+ rows.slice(0,200).forEach(d=>{
   if(d.cat!==last){h+='<div class="grp">'+esc(d.cat)+'</div>';last=d.cat}
   h+='<div class="card"><div class="l"><span class="rule">'+hl(d.rule,ts)+'</span><div class="desc">'+hl(d.desc,ts)+'</div>'+(d.code?'<div class="code">Law part code <b>'+hl(d.code,ts)+'</b>'+(d.rep?'<i>repealed</i>':'')+'</div>':'')+'</div><div class="r"><div class="fine">$'+d.fine.toLocaleString("en-AU")+'</div>'+
-  (d.pts?'<br><span class="pts">'+d.pts+' demerit'+(d.pts>1?'s':'')+'</span>':'')+(d.dbl?'<div class="dbl">Double demerits</div>':'')+'</div></div>'});
- list.innerHTML=h}
+  (d.pts?'<br><span class="pts">'+d.pts+' demerit'+(d.pts>1?'s':'')+'</span>':'')+(d.dbl?'<div class="dbl">Double demerits</div>':'')+(d.sch?'<div class="dbl">Higher in school zone</div>':'')+'</div></div>'});
+ if(rows.length>200)h+='<div class="empty">Showing the first 200 of '+rows.length+'. Type more to narrow the results.</div>';list.innerHTML=h}
 function buildBar(){
  chips.innerHTML=about?'<button class="back">‹ Back</button><span class="ct">About &amp; Privacy</span>':active?'<button class="back" id="back">‹ Categories</button><span class="ct">'+esc(active)+'</span>':""}
 function home(){
